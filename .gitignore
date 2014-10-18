@@ -3,6 +3,9 @@
 *.class
 *.war
 *.ear
+*.png
+*.jpg
+*.ttf
 hs_err_pid*
 
 ## GWT
@@ -62,3 +65,4 @@ build/
 ## OS Specific
 .DS_Store
 /build.gradle
+/gradle/
