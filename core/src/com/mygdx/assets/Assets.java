@@ -7,12 +7,10 @@ public class Assets {
 	public static AssetManager manager = new AssetManager();
 
 	public static final String splashScreen = "ui/splash-screen.jpg";
-	public static final String back = "ui/back.png";
 	public static final String plateau = "ui/plateau.png";
 
 	public static void load() {
 		manager.load(splashScreen, Texture.class);
-		manager.load(back, Texture.class);
 		manager.load(plateau, Texture.class);
 	}
 

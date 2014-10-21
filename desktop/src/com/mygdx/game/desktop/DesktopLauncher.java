@@ -10,7 +10,7 @@ public class DesktopLauncher {
 		
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = IceBox.TITLE + " v" + IceBox.VERSION;
-//		config.resizable = false;
+		config.resizable = false;
 		new LwjglApplication(new IceBox(), config);
 	}
 }

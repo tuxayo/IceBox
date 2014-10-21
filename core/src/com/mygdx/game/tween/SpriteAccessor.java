@@ -1,8 +1,8 @@
 package com.mygdx.game.tween;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
-
 import aurelienribon.tweenengine.TweenAccessor;
+
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class SpriteAccessor implements TweenAccessor<Sprite> {
 
@@ -31,3 +31,4 @@ public class SpriteAccessor implements TweenAccessor<Sprite> {
 	}
 
 }
+

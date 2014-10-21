@@ -6,16 +6,16 @@ import com.badlogic.gdx.utils.Array;
 public class Slot {
 
 	private Item item;
-	private int amount;
+	private long val;
 	private Array<SlotListener> slotListeners = new Array<SlotListener>();
 
-	public Slot(Item item, int amount) {
+	public Slot(Item item) {
 		this.item = item;
-		this.amount = amount;
+		this.val = (item != null) ? item.name().substring(0, 7).hashCode() : 0;
 	}
 
 	public boolean isEmpty() {
-		return item == null || amount <= 0;
+		return item == null;
 	}
 
 	public void addListener(SlotListener slotListener) {
@@ -37,32 +37,24 @@ public class Slot {
 	 *         {@code False} otherwise.
 	 */
 	public boolean matches(Slot other) {
-		return this.item == other.item && this.amount >= other.amount;
+		return this.item == other.item;
+	}
+	
+	public boolean isOpposite(Slot other) {
+		return this.val == other.val;
 	}
 
-	public boolean add(Item item, int amount) {
+	public boolean add(Item item) {
 		if (this.item == item || this.item == null) {
 			this.item = item;
-			this.amount += amount;
+			this.val = item.name().substring(0, 7).hashCode();
 			notifyListeners();
 			return true;
-		}
+		} 
 
 		return false;
 	}
 
-	public boolean take(int amount) {
-		if (this.amount >= amount) {
-			this.amount -= amount;
-			if (this.amount == 0) {
-				item = null;
-			}
-			notifyListeners();
-			return true;
-		}
-
-		return false;
-	}
 
 	private void notifyListeners() {
 		for (SlotListener slotListener : slotListeners) {
@@ -73,13 +65,24 @@ public class Slot {
 	public Item getItem() {
 		return item;
 	}
-
-	public int getAmount() {
-		return amount;
+	
+	public String getoppositeName() {
+		return item.getOppositeTexture();	
 	}
-
+	
+	public void inverse() {
+		System.out.println("inversement !!");
+		item.inverse();
+		val = (item != null) ? item.name().substring(0, 7).hashCode() : 0;
+		notifyListeners();
+	}
+	
 	@Override
 	public String toString() {
-		return "Slot[" + item + ":" + amount + "]";
+		return "Slot[" + item + ":" + val + "]";
+	}
+
+	public long getVal() {
+		return val;
 	}
 }

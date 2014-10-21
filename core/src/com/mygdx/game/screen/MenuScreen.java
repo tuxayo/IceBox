@@ -66,7 +66,7 @@ public class MenuScreen implements Screen {
 	    sprite = new Sprite(Assets.manager.get(Assets.splashScreen, Texture.class));
 		sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
-		skin = new Skin(Gdx.files.internal("data/uiskin.json"), new TextureAtlas("data/uiskin.pack"));
+		skin = new Skin(Gdx.files.internal("ui/uiskin.json"), new TextureAtlas("ui/uiskin.pack"));
 
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());

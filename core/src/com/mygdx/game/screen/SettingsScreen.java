@@ -17,10 +17,10 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.Assets;
@@ -79,7 +79,7 @@ public class SettingsScreen implements Screen {
 		sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		sprite.setAlpha(0.7f);
 		
-		skin = new Skin(Gdx.files.internal("data/uiskin.json"), new TextureAtlas("data/uiskin.pack"));
+		skin = new Skin(Gdx.files.internal("ui/uiskin.json"), new TextureAtlas("ui/uiskin.pack"));
 
 		table = new Table(skin);
 		table.setFillParent(true);
@@ -90,7 +90,7 @@ public class SettingsScreen implements Screen {
 		final TextField levelDirectoryInput = new TextField(levelDirectory().path(), skin); // creating a new TextField with the current level directory already written in it
 		levelDirectoryInput.setMessageText("level directory"); // set the text to be shown when nothing is in the TextField
 
-		final TextButton back = new TextButton("BACK", skin);
+		final ImageButton back = new ImageButton(skin, "back");
 		back.pad(10);
 
 		ClickListener buttonHandler = new ClickListener() {
@@ -132,13 +132,13 @@ public class SettingsScreen implements Screen {
 		back.addListener(buttonHandler);
 
 		// putting everything in the table
-		table.add(new Label("SETTINGS", skin)).spaceBottom(50).colspan(3).expandX().row();
+		table.add(new Label("SETTINGS", skin)).spaceBottom(50).colspan(3).expandX();
+		table.add(back).top().right().row();
 		table.add();
 		table.add("level directory");
 		table.add().row();
 		table.add(vSyncCheckBox).top().expandY();
 		table.add(levelDirectoryInput).top().fillX();
-		table.add(back).bottom().right();
 
 		stage.addActor(table);
 

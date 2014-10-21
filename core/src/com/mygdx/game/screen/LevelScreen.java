@@ -21,7 +21,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.Assets;
 import com.mygdx.dragNdrop.InventoryScreen;
@@ -64,7 +63,7 @@ public class LevelScreen implements Screen {
 		sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		sprite.setAlpha(0.7f);
 		
-		skin = new Skin(Gdx.files.internal("data/uiskin.json"), new TextureAtlas("data/uiskin.pack"));
+		skin = new Skin(Gdx.files.internal("ui/uiskin.json"), new TextureAtlas("ui/uiskin.pack"));
 		
 		table = new Table(skin);
 		table.setFillParent(true);
@@ -74,7 +73,8 @@ public class LevelScreen implements Screen {
 
 		ScrollPane scrollPane = new ScrollPane(list, skin);
 		
-		TextButton play = new TextButton("PLAY", skin);
+		ImageButton play = new ImageButton(skin, "play");
+		play.setSize(50, 50);
 		play.addListener(new ClickListener() {
 
 			@Override
@@ -87,6 +87,7 @@ public class LevelScreen implements Screen {
 		play.pad(15);
 
 		ImageButton back = new ImageButton(skin, "back");
+
 		back.addListener(new ClickListener() {
 
 			@Override
@@ -103,10 +104,10 @@ public class LevelScreen implements Screen {
 		});
 		back.pad(10);
 
-		table.add(new Label("SELECT LEVEL", skin)).colspan(3).expandX().spaceBottom(50).row();
+		table.add(new Label("SELECT LEVEL", skin)).colspan(3).expandX().spaceBottom(50);
+		table.add(back).uniformX().top().right().row();
 		table.add(scrollPane).uniformX().expandY().top().left();
 		table.add(play).uniformX();
-		table.add(back).uniformX().bottom().right();
 
 		stage.addActor(table);
 

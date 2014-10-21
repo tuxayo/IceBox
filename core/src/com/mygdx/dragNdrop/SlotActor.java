@@ -25,13 +25,13 @@ public class SlotActor extends ImageButton implements SlotListener {
 	}
 
 	private static ImageButtonStyle createStyle(Skin skin, Slot slot) {
-		TextureAtlas icons = new TextureAtlas("data/icons.atlas");
+		TextureAtlas icons = new TextureAtlas("ui/uiskin.pack");
 		TextureRegion image;
 		
 		if (slot.getItem() != null) {
 			image = icons.findRegion(slot.getItem().getTextureRegion());
 		} else {
-			image = icons.findRegion("nothing");
+			image = icons.findRegion("retour");
 		}
 		
 		ImageButtonStyle style = new ImageButtonStyle(skin.get(ButtonStyle.class));
@@ -44,10 +44,10 @@ public class SlotActor extends ImageButton implements SlotListener {
 	public Slot getSlot() {
 		return slot;
 	}
-
+	
 	@Override
 	public void hasChanged(Slot slot) {
 		setStyle(createStyle(skin, slot));
 	}
-
+	
 }

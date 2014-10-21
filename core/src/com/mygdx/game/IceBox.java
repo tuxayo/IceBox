@@ -6,7 +6,7 @@ import com.mygdx.game.screen.SplashScreen;
 
 public class IceBox extends Game {
 	// VERSION : <numeroDuSprint> . <numeroSemaineDansSprint> . <NbfonctionaliteAjoutee>
-	public static final String TITLE = "Ice Box ", VERSION = "1.2.5";
+	public static final String TITLE = "Ice Box ", VERSION = "1.2.6";
 
 	@Override         
 	public void create() {  

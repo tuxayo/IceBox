@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
 
+
 public class SlotTarget extends Target {
 
 	private Slot targetSlot;
@@ -18,7 +19,9 @@ public class SlotTarget extends Target {
 	@Override
 	public boolean drag(Source source, Payload payload, float x, float y, int pointer) {
 		Slot payloadSlot = (Slot) payload.getObject();
-		if (targetSlot.getItem() == payloadSlot.getItem() || targetSlot.getItem() == null) {
+		
+		if (targetSlot.getItem() == payloadSlot.getItem() || targetSlot.getItem() == null || 
+				targetSlot.isOpposite(payloadSlot)) {
 			getActor().setColor(Color.WHITE);
 			return true;
 		} else {
@@ -35,5 +38,6 @@ public class SlotTarget extends Target {
 	public void reset(Source source, Payload payload) {
 		getActor().setColor(Color.LIGHT_GRAY);
 	}
+	
 
 }
