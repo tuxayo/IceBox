@@ -23,7 +23,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.Assets;
-import com.mygdx.dragNdrop.InventoryScreen;
 
 public class LevelScreen implements Screen {
 
@@ -80,7 +79,7 @@ public class LevelScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 //				((Game) Gdx.app.getApplicationListener()).setScreen(new Play());
-				((Game) Gdx.app.getApplicationListener()).setScreen(new InventoryScreen());
+				((Game) Gdx.app.getApplicationListener()).setScreen(new PlayScreen());
 			}
 
 		});

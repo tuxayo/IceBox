@@ -23,7 +23,7 @@ public enum Item {
 	CARTE_9("carte9"),
 	CARTE_9_NEG("carte9-neg");
 
-	
+
 	private String textureRegion;
 
 	private Item(String textureRegion) {
@@ -34,18 +34,46 @@ public enum Item {
 		return textureRegion;
 	}
 
+	public static Item fromString(String text) {
+		if (text != null) {
+			for (Item b : Item.values()) {
+				if (text.equalsIgnoreCase(b.textureRegion)) {
+					return b;
+				}
+			}
+		}
+		return null;
+	}
+
 	public String getOppositeTexture() {
-		if (textureRegion.contains("-neg"))
+		if (textureRegion.contains("-neg")) {
 			return textureRegion.substring(0, 6);
-		else
+		} else {
 			return textureRegion.concat("-neg");
+		}
 	}
 	
-	public void inverse() {
-		this.textureRegion = getOppositeTexture();
+	public Item getOppositeItem () {
+		String oppositeTexture = getOppositeTexture();
+		return fromString(oppositeTexture);
 	}
-	
+
+	public boolean isOpposite(Item other) {
+		return getOppositeTexture().equalsIgnoreCase(other.getTextureRegion());
+	}
+
+
 	public void setTextureRegion(String textureRegion) {
 		this.textureRegion = textureRegion;
 	}
+
+	public void setToZero() {
+		setTextureRegion("carte0");
+	}
+
+	@Override
+	public String toString() {
+		return textureRegion;
+	}
+
 }

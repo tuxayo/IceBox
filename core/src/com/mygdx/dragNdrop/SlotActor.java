@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.mygdx.game.screen.PlayScreen;
 
 
 public class SlotActor extends ImageButton implements SlotListener {
@@ -20,7 +21,7 @@ public class SlotActor extends ImageButton implements SlotListener {
 		slot.addListener(this);
 		
 		SlotTooltip tooltip = new SlotTooltip(slot, skin);
-		InventoryScreen.stage.addActor(tooltip);
+		PlayScreen.stage.addActor(tooltip);
 		addListener(new TooltipListener(tooltip, true));
 	}
 
@@ -31,7 +32,7 @@ public class SlotActor extends ImageButton implements SlotListener {
 		if (slot.getItem() != null) {
 			image = icons.findRegion(slot.getItem().getTextureRegion());
 		} else {
-			image = icons.findRegion("retour");
+			image = icons.findRegion("white");
 		}
 		
 		ImageButtonStyle style = new ImageButtonStyle(skin.get(ButtonStyle.class));
@@ -39,6 +40,10 @@ public class SlotActor extends ImageButton implements SlotListener {
 		style.imageDown = new TextureRegionDrawable(image);
 
 		return style;
+	}
+	
+	public void removeClickListener () {
+		removeListener(getClickListener());
 	}
 
 	public Slot getSlot() {

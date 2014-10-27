@@ -27,9 +27,9 @@ public class SlotTooltip extends Window implements SlotListener {
 		}
 
 		// title displays the amount
-		setTitle("" + slot.getVal() + "x " + slot.getItem());
+		setTitle("" + slot.getSide() + "x " + slot.getItem());
 		clear();
-		Label label = new Label("Super awesome description of " + slot.getItem(), skin);
+		Label label = new Label("Carte " + slot.getItem(), skin);
 		add(label);
 		pack();
 	}

@@ -6,12 +6,12 @@ import com.badlogic.gdx.utils.Array;
 public class Slot {
 
 	private Item item;
-	private long val;
+	private PaneSide side;
 	private Array<SlotListener> slotListeners = new Array<SlotListener>();
 
-	public Slot(Item item) {
+	public Slot(Item item, PaneSide side) {
 		this.item = item;
-		this.val = (item != null) ? item.name().substring(0, 7).hashCode() : 0;
+		this.side = side;
 	}
 
 	public boolean isEmpty() {
@@ -26,36 +26,37 @@ public class Slot {
 		slotListeners.removeValue(slotListener, true);
 	}
 
-	/**
-	 * Returns {@code true} in case this slot has the same item type and at
-	 * least the same amount of items as the given other slot.
-	 * 
-	 * @param other
-	 *            The other slot to be checked.
-	 * @return {@code True} in case this slot has the same item type and at
-	 *         least the same amount of items as the given other slot.
-	 *         {@code False} otherwise.
-	 */
+	public void removeAllListener() {
+		slotListeners.removeAll(slotListeners, true);
+	}
+
+
 	public boolean matches(Slot other) {
 		return this.item == other.item;
 	}
-	
+
 	public boolean isOpposite(Slot other) {
-		return this.val == other.val;
+		return side.equals(other.side) && item.isOpposite(other.item);
 	}
 
+
 	public boolean add(Item item) {
-		if (this.item == item || this.item == null) {
+		if (this.item == null) {
 			this.item = item;
-			this.val = item.name().substring(0, 7).hashCode();
+
 			notifyListeners();
 			return true;
-		} 
+		}
 
 		return false;
 	}
 
-
+	public boolean take() {
+		item = null;
+		notifyListeners();
+		return true;
+	}
+	
 	private void notifyListeners() {
 		for (SlotListener slotListener : slotListeners) {
 			slotListener.hasChanged(this);
@@ -65,24 +66,28 @@ public class Slot {
 	public Item getItem() {
 		return item;
 	}
-	
-	public String getoppositeName() {
+
+	public String getoppositeTexture() {
 		return item.getOppositeTexture();	
 	}
-	
-	public void inverse() {
-		System.out.println("inversement !!");
-		item.inverse();
-		val = (item != null) ? item.name().substring(0, 7).hashCode() : 0;
-		notifyListeners();
-	}
-	
-	@Override
-	public String toString() {
-		return "Slot[" + item + ":" + val + "]";
+
+	public PaneSide getSide() {
+		return side;
 	}
 
-	public long getVal() {
-		return val;
+	public void setSide(PaneSide side) {
+		this.side = side;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Slot[" + item + ":" + side + "]";
+	}
+
+	public void inverse() {
+		Item inverse = item.getOppositeItem();
+		take();
+		add(inverse);
 	}
 }
