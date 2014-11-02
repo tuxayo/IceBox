@@ -1,6 +1,7 @@
 package com.mygdx.game.screen;
 
-import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeOut;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.parallel;
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
@@ -21,13 +22,18 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.mygdx.assets.Assets;
+import com.mygdx.coreLogic.paramGame.Niveau;
+import com.mygdx.coreLogic.paramGame.Test;
 import com.mygdx.dragNdrop.Deck;
 import com.mygdx.dragNdrop.DeckActor;
 import com.mygdx.dragNdrop.Pane;
 import com.mygdx.dragNdrop.PaneActor;
 import com.mygdx.dragNdrop.PaneSide;
+import com.mygdx.dragNdrop.WrongSideException;
 import com.mygdx.game.tween.ActorAccessor;
 import com.mygdx.game.tween.SpriteAccessor;
+import com.mygdx.parser.ExpressionParser;
+import com.mygdx.parser.ExpressionTree;
 
 
 public class PlayScreen implements Screen {
@@ -38,6 +44,7 @@ public class PlayScreen implements Screen {
 	private TweenManager tweenManager;
 	private PaneActor leftpaneActor;
 	private PaneActor rightpaneActor;
+	private Niveau level;
 
 	public static Stage stage;
 
@@ -58,19 +65,46 @@ public class PlayScreen implements Screen {
 		Skin skin = new Skin(Gdx.files.internal("ui/uiskin.json"), new TextureAtlas("ui/uiskin.pack"));
 		DragAndDrop dragAndDrop = new DragAndDrop();
 
-		deckActor = new DeckActor(new Deck(PaneSide.CENTER), dragAndDrop, skin);
-		leftpaneActor = new PaneActor(new Pane(PaneSide.LEFT), dragAndDrop, skin);
-		rightpaneActor = new PaneActor(new Pane(PaneSide.RIGHT), dragAndDrop, skin);
+		level = Test.GetNiveau(9);
+		
+		try {
+			deckActor = new DeckActor(new Deck(PaneSide.CENTER, level), dragAndDrop, skin);
+			leftpaneActor = new PaneActor(new Pane(PaneSide.LEFT, level), dragAndDrop, skin);
+			rightpaneActor = new PaneActor(new Pane(PaneSide.RIGHT, level), dragAndDrop, skin);
+		} catch (WrongSideException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		String leftExpr = leftpaneActor.stringify();
+		System.out.println("Expression gauche : " + leftExpr);
+		ExpressionParser expL = new ExpressionParser(leftExpr);
+		try {
+			ExpressionTree simpltree = expL.parse().simplify();
+			System.out.println(simpltree.postfix());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String rightExpr = rightpaneActor.stringify();
+		System.out.println("Expression droite : " + rightExpr);
+		ExpressionParser expR = new ExpressionParser(rightExpr);
+		try {
+			ExpressionTree simpltree = expR.parse().simplify();
+			System.out.println(simpltree.postfix());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		float X = (Gdx.graphics.getWidth() - deckActor.getWidth()) / 2.0f;
 		deckActor.setPosition(X, 0);
 		
-		leftpaneActor.setPosition(167, 289);
-		rightpaneActor.setPosition(473, 289);
+		leftpaneActor.setPosition(67, 170);
+		rightpaneActor.setPosition(373, 170);
 		
-		Image icebox = new Image(skin, "carte-box");
-		icebox.setPosition( (Gdx.graphics.getWidth() - icebox.getWidth()) / 2.0f,
-				(Gdx.graphics.getHeight() - icebox.getHeight() + 100) / 2.0f);
 
 		Image close = new Image(skin, "quitter");
 		close.setSize(50, 50);
@@ -102,12 +136,13 @@ public class PlayScreen implements Screen {
 		undo.setPosition(Gdx.graphics.getWidth() - (close.getWidth() + undo.getWidth() + 20), 
 				Gdx.graphics.getHeight() - undo.getHeight());
 
+		
 		stage.addActor(close);
 		stage.addActor(undo);
-		stage.addActor(icebox);
 		stage.addActor(deckActor);
 		stage.addActor(leftpaneActor);
 		stage.addActor(rightpaneActor);
+
 	}
 
 	public DeckActor getDeckActor() {

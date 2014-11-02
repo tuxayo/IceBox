@@ -1,0 +1,13 @@
+<niveau>
+  <pg>
+    <carte value="0" url="image/carte0.png"></carte>
+	<carte value="2" url="image/carte2.png"></carte>
+  </pg>
+  <pd>
+    <carte value="x" url="image/carte-box.png"></carte>
+	<carte value="5" url="image/carte5.png"></carte>
+  </pd>
+  <deck>
+  <carte value="5" url="image/carte5.png"></carte>
+  </deck>
+</niveau>

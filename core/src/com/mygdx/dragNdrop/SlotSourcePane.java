@@ -24,13 +24,13 @@ public class SlotSourcePane extends Source {
 	public Payload dragStart(InputEvent event, float x, float y, int pointer) {
 
 		Payload payload = new Payload();
-		Slot payloadSlot = new Slot(sourceSlot.getItem(), sourceSlot.getSide());
+		Slot payloadSlot = new Slot(sourceSlot.getCard(), sourceSlot.getSide());
 		sourceSlot.take();
 		payload.setObject(payloadSlot);
 
 
 		TextureAtlas icons = new TextureAtlas("ui/uiskin.pack");	
-		TextureRegion icon = icons.findRegion(payloadSlot.getItem().getTextureRegion());
+		TextureRegion icon = icons.findRegion(payloadSlot.getCard().getTextureRegion());
 
 		Actor dragActor = new Image(icon);
 		payload.setDragActor(dragActor);
@@ -53,19 +53,15 @@ public class SlotSourcePane extends Source {
 
 		if (target != null) {
 			Slot targetSlot = ((SlotActor) target.getActor()).getSlot();
-			if (targetSlot.getItem() == null) {
-				targetSlot.add(payloadSlot.getItem());				
+			if (targetSlot.getCard() == null) {
+				targetSlot.add(payloadSlot.getCard());				
 			} else if (targetSlot.isOpposite(payloadSlot)) {
-				targetSlot.take();
-				targetSlot.add(Item.CARTE_0);
+				targetSlot.setToZero();
 			} else {
-				Item targetType = targetSlot.getItem();
-				targetSlot.take();
-				targetSlot.add(payloadSlot.getItem());
-				sourceSlot.add(targetType);
+				sourceSlot.swapWith(targetSlot, payloadSlot);
 			}
 		} else {
-			sourceSlot.add(payloadSlot.getItem());
+			sourceSlot.add(payloadSlot.getCard());
 		}
 	}
 }

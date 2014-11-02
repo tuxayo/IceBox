@@ -1,17 +1,20 @@
 package com.mygdx.dragNdrop;
 
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.coreLogic.cards.Carte;
 
 
 public class Slot {
 
-	private Item item;
+	private Carte item;
+	private String operator;
 	private PaneSide side;
 	private Array<SlotListener> slotListeners = new Array<SlotListener>();
 
-	public Slot(Item item, PaneSide side) {
+	public Slot(Carte item, PaneSide side) {
 		this.item = item;
 		this.side = side;
+		this.operator = " + ";
 	}
 
 	public boolean isEmpty() {
@@ -35,12 +38,13 @@ public class Slot {
 		return this.item == other.item;
 	}
 
+	
 	public boolean isOpposite(Slot other) {
 		return side.equals(other.side) && item.isOpposite(other.item);
 	}
 
 
-	public boolean add(Item item) {
+	public boolean add(Carte item) {
 		if (this.item == null) {
 			this.item = item;
 
@@ -63,7 +67,7 @@ public class Slot {
 		}
 	}
 
-	public Item getItem() {
+	public Carte getCard() {
 		return item;
 	}
 
@@ -79,15 +83,34 @@ public class Slot {
 		this.side = side;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Slot[" + item + ":" + side + "]";
+		if (item == null || item.isCarteBox()) 
+			return new String();
+
+		return item.toString() + operator;		
 	}
 
 	public void inverse() {
-		Item inverse = item.getOppositeItem();
+		Carte inverse = item.getOppositeCarte();
 		take();
 		add(inverse);
+	}
+
+	public void swapWith(Slot targetSlot, Slot payloadSlot) {
+		Carte targetType = targetSlot.getCard();
+		targetSlot.take();
+		targetSlot.add(payloadSlot.getCard());
+		add(targetType);
+	}
+	
+	
+	public void setToZero() {
+		take();
+		add(Carte.getCarteZero());
+	}
+
+	public boolean isZero() {
+		return item != null && item.getTextureRegion().equals("carte0");
 	}
 }

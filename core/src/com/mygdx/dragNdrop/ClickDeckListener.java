@@ -8,7 +8,7 @@ public class ClickDeckListener extends ClickListener {
 		@Override
 		public void clicked(InputEvent event, float x, float y) {
 			System.out.println("Button turn cliked!!");
-			((SlotActor)(event.getTarget().getParent())).getSlot().inverse();
+			((SlotActor)(event.getTarget())).getSlot().inverse();
 		}
 
 }

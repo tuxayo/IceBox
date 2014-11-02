@@ -1,6 +1,5 @@
 package com.mygdx.dragNdrop;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
@@ -13,7 +12,7 @@ public class SlotTargetPane extends Target {
 	public SlotTargetPane(SlotActor actor) {
 		super(actor);
 		targetSlot = actor.getSlot();
-		getActor().setColor(Color.LIGHT_GRAY);
+//		getActor().setColor(Color.LIGHT_GRAY);
 	}
 
 	@Override
@@ -21,10 +20,10 @@ public class SlotTargetPane extends Target {
 		Slot payloadSlot = (Slot) payload.getObject();
 		
 		if (targetSlot.getSide() == payloadSlot.getSide() || payloadSlot.getSide() == PaneSide.CENTER) {
-			getActor().setColor(Color.WHITE);
+//			getActor().setColor(Color.WHITE);
 			return true;
 		} else {
-			getActor().setColor(Color.DARK_GRAY);
+//			getActor().setColor(Color.DARK_GRAY);
 			return false;
 		}
 	}
@@ -35,7 +34,7 @@ public class SlotTargetPane extends Target {
 
 	@Override
 	public void reset(Source source, Payload payload) {
-		getActor().setColor(Color.LIGHT_GRAY);
+//		getActor().setColor(Color.LIGHT_GRAY);
 	}
 	
 

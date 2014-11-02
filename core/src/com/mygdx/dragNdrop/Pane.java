@@ -1,39 +1,44 @@
 package com.mygdx.dragNdrop;
 
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.coreLogic.cards.Carte;
+import com.mygdx.coreLogic.paramGame.Niveau;
 
 public class Pane {
 
 	private Array<Slot> slots;
-	private int NbCardsInLeftPane = 20;
 
-	public Pane(PaneSide side) {
+	public Pane(PaneSide side, Niveau level) throws WrongSideException {
 
-		slots = new Array<Slot>(NbCardsInLeftPane);
+		int emptySlot = 21;
+		slots = new Array<Slot>(21);
 
-		for (int i = 0; i < NbCardsInLeftPane; i++) { // Ici on récupere le nb de carte dans le panneau gauche !
+		if (side.equals(PaneSide.LEFT)) {
+			emptySlot -= level.getCartegauche().size();
+			
+			for (Carte card : level.getCartegauche())
+				slots.add(new Slot(card, side));
+			
+		} else if (side.equals(PaneSide.RIGHT)) {
+			emptySlot -= level.getCartegauche().size();
+
+			for (Carte card : level.getCartedroite())
+				slots.add(new Slot(card, side));
+			
+		} else {
+			throw new WrongSideException("Wrong side for pane");
+		}
+		
+		for(int i = 1; i < emptySlot; ++i)
 			slots.add(new Slot(null, side));
-		}
-
-		// creation de cartes aléatoire
-		for (Slot slot : slots) {
-			slot.add(Item.values()[MathUtils.random(1, Item.values().length - 1)]);
-		}
-
-		// creation d'emplacement vide
-		for (int i = 0; i < 5; i++) {
-			Slot randomSlot = slots.get(MathUtils.random(0, slots.size - 1));
-			randomSlot.take();
-		}
 
 	}
 
-	public boolean store(Item item) {
+	public boolean store(Carte card) {
 		// check for an available empty slot
 		Slot emptySlot = firstSlotWithItem(null);
 		if (emptySlot != null) {
-			emptySlot.add(item);
+			emptySlot.add(card);
 			return true;
 		}
 
@@ -47,13 +52,14 @@ public class Pane {
 	}
 
 
-	private Slot firstSlotWithItem(Item item) {
+	private Slot firstSlotWithItem(Carte card) {
 		for (Slot slot : slots) {
-			if (slot.getItem() == item) {
+			if (slot.getCard() == card) {
 				return slot;
 			}
 		}
 		return null;
 	}
+	
 }
 

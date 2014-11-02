@@ -23,11 +23,11 @@ public class SlotSourceDeck extends Source {
 	public Payload dragStart(InputEvent event, float x, float y, int pointer) {
 
 		Payload payload = new Payload();
-		Slot payloadSlot = new Slot(sourceSlot.getItem(), sourceSlot.getSide());
+		Slot payloadSlot = new Slot(sourceSlot.getCard(), sourceSlot.getSide());
 		payload.setObject(payloadSlot);
 
 		TextureAtlas icons = new TextureAtlas("ui/uiskin.pack");	
-		TextureRegion icon = icons.findRegion(payloadSlot.getItem().getTextureRegion());
+		TextureRegion icon = icons.findRegion(payloadSlot.getCard().getTextureRegion());
 
 		Actor dragActor = new Image(icon);
 		payload.setDragActor(dragActor);
@@ -51,8 +51,8 @@ public class SlotSourceDeck extends Source {
 		if (target != null) {
 			Slot targetSlot = ((SlotActor) target.getActor()).getSlot();
 			
-			if (targetSlot.getItem() == null ) {
-				targetSlot.add(payloadSlot.getItem());
+			if (targetSlot.getCard() == null ) {
+				targetSlot.add(payloadSlot.getCard());
 			}
 		}
 	}

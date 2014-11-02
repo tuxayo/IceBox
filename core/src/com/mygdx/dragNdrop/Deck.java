@@ -1,27 +1,26 @@
 
 package com.mygdx.dragNdrop;
 
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.coreLogic.cards.Carte;
+import com.mygdx.coreLogic.paramGame.Niveau;
 
 
 public class Deck {
 
 	private Array<Slot> slots;
-	private int NbCardsInDeck = 8;
+	
+	public Deck(PaneSide side, Niveau level) throws WrongSideException {
 
-	public Deck(PaneSide side) {
+		slots = new Array<Slot>(level.getCartedecks().size());
 
-		slots = new Array<Slot>(NbCardsInDeck);
-
-		for (int i = 0; i < NbCardsInDeck; i++) { // Ici on récupere le nb de carte de deck !
-			slots.add(new Slot(null, side));
+		if (side.equals(PaneSide.CENTER)) {
+			for(Carte card : level.getCartedecks())
+				slots.add(new Slot(card, side));
+		} else {
+			throw new WrongSideException("Wrong side for deck");
 		}
 
-		// creation de cartes aléatoire
-		for (Slot slot : slots) {
-			slot.add(Item.values()[MathUtils.random(1, Item.values().length - 1)]);
-		}
 	}
 
 	public Array<Slot> getSlots() {

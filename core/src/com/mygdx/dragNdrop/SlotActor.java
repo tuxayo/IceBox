@@ -2,16 +2,22 @@ package com.mygdx.dragNdrop;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.game.screen.PlayScreen;
 
 
-public class SlotActor extends ImageButton implements SlotListener {
+public class SlotActor extends Image implements SlotListener {
 
 	private Slot slot;
 	private Skin skin;
+	private EventListener clickDelCarteListener;
+
+	public EventListener getClickDelCarteListener() {
+		return clickDelCarteListener;
+	}
 
 	public SlotActor(Skin skin, Slot slot) {
 		super(createStyle(skin, slot));
@@ -20,31 +26,26 @@ public class SlotActor extends ImageButton implements SlotListener {
 		
 		slot.addListener(this);
 		
+		clickDelCarteListener = new ClickDelCarteListener();
+		
 		SlotTooltip tooltip = new SlotTooltip(slot, skin);
 		PlayScreen.stage.addActor(tooltip);
 		addListener(new TooltipListener(tooltip, true));
 	}
 
-	private static ImageButtonStyle createStyle(Skin skin, Slot slot) {
+	private static TextureRegion createStyle(Skin skin, Slot slot) {
 		TextureAtlas icons = new TextureAtlas("ui/uiskin.pack");
 		TextureRegion image;
 		
-		if (slot.getItem() != null) {
-			image = icons.findRegion(slot.getItem().getTextureRegion());
+		if (slot.getCard() != null) {
+			image = icons.findRegion(slot.getCard().getTextureRegion());
 		} else {
-			image = icons.findRegion("white");
+			image = icons.findRegion("transparent");
 		}
 		
-		ImageButtonStyle style = new ImageButtonStyle(skin.get(ButtonStyle.class));
-		style.imageUp = new TextureRegionDrawable(image);
-		style.imageDown = new TextureRegionDrawable(image);
+		return image;
+	}
 
-		return style;
-	}
-	
-	public void removeClickListener () {
-		removeListener(getClickListener());
-	}
 
 	public Slot getSlot() {
 		return slot;
@@ -52,7 +53,22 @@ public class SlotActor extends ImageButton implements SlotListener {
 	
 	@Override
 	public void hasChanged(Slot slot) {
-		setStyle(createStyle(skin, slot));
+		setDrawable(new TextureRegionDrawable(createStyle(skin, slot)));
+
+		if (slot.isZero())
+			addListener(clickDelCarteListener);
+		else
+			removeListener(clickDelCarteListener);
+	}
+	
+	@Override
+	public boolean addListener(EventListener listener) {
+		return super.addListener(listener);
+	}
+	
+	@Override
+	public boolean removeListener(EventListener listener) {
+		return super.removeListener(listener);
 	}
 	
 }
