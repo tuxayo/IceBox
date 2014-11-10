@@ -46,7 +46,6 @@ public class SlotActor extends Image implements SlotListener {
 		return image;
 	}
 
-
 	public Slot getSlot() {
 		return slot;
 	}
@@ -71,4 +70,11 @@ public class SlotActor extends Image implements SlotListener {
 		return super.removeListener(listener);
 	}
 	
+	public boolean isSuspended() {
+		return slot.isSuspended();
+	}
+	
+	public void suspends() {
+		slot.suspends();
+	}
 }

@@ -3,35 +3,43 @@ package com.mygdx.dragNdrop;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.coreLogic.cards.Carte;
 import com.mygdx.coreLogic.paramGame.Niveau;
+import com.mygdx.coreLogic.paramGame.paramGame;
 
 public class Pane {
 
 	private Array<Slot> slots;
 
-	public Pane(PaneSide side, Niveau level) throws WrongSideException {
-
+	public Pane(PaneSide side) throws WrongSideException {
 		int emptySlot = 21;
 		slots = new Array<Slot>(21);
+		Niveau level = paramGame.getJoueur().getChapitre().getNiveau();
 
 		if (side.equals(PaneSide.LEFT)) {
 			emptySlot -= level.getCartegauche().size();
 			
 			for (Carte card : level.getCartegauche())
-				slots.add(new Slot(card, side));
+				slots.add(new Slot(card, side, false));
 			
 		} else if (side.equals(PaneSide.RIGHT)) {
 			emptySlot -= level.getCartegauche().size();
 
 			for (Carte card : level.getCartedroite())
-				slots.add(new Slot(card, side));
+				slots.add(new Slot(card, side, false));
 			
 		} else {
 			throw new WrongSideException("Wrong side for pane");
 		}
 		
 		for(int i = 1; i < emptySlot; ++i)
-			slots.add(new Slot(null, side));
+			slots.add(new Slot(null, side, false));
 
+	}
+
+	public Pane(Pane pane) {
+		slots = new Array<Slot>(21);
+		
+		for (Slot slot : pane.getSlots())
+			slots.add(new Slot(slot));
 	}
 
 	public boolean store(Carte card) {

@@ -3,87 +3,56 @@ uiskin.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-default
+oeuf
   rotate: false
-  xy: 0, 48
-  size: 254, 77
-  orig: 254, 77
+  xy: 0, 3
+  size: 150, 200
+  split: 0, 0, 1, 0
+  orig: 150, 200
   offset: 0, 0
   index: -1
-carte8
+selection
   rotate: false
-  xy: 0, 0
-  size: 48, 48
-  split: 5, 6, 6, 5
-  orig: 48, 48
+  xy: 0, 1
+  size: 1, 1
+  orig: 1, 1
   offset: 0, 0
   index: -1
-carte0
+default-pane-noborder
   rotate: false
-  xy: 48, 0
-  size: 48, 48
-  split: 6, 0, 5, 5
-  orig: 48, 48
+  xy: 2, 1
+  size: 1, 1
+  split: 0, 0, 0, 0
+  orig: 1, 1
   offset: 0, 0
   index: -1
-carte9
+perso1
   rotate: false
-  xy: 96, 0
-  size: 48, 48
-  split: 6, 5, 6, 5
-  orig: 48, 48
+  xy: 151, 57
+  size: 150, 146
+  split: 1, 0, 0, 0
+  orig: 150, 146
   offset: 0, 0
   index: -1
-carte3
+transparent
   rotate: false
-  xy: 144, 0
-  size: 48, 48
-  split: 5, 5, 5, 5
-  orig: 48, 48
+  xy: 151, 6
+  size: 50, 50
+  split: 0, 0, 0, 0
+  orig: 50, 50
   offset: 0, 0
   index: -1
-carte5-neg
+default-splitpane-vertical
   rotate: false
-  xy: 192, 0
-  size: 48, 48
-  split: 5, 5, 6, 5
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-carte4-neg
-  rotate: false
-  xy: 240, 0
-  size: 48, 48
-  split: 5, 5, 5, 5
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-jouer
-  rotate: false
-  xy: 254, 66
-  size: 160, 59
-  split: 0, 2, 0, 0
-  orig: 160, 59
-  offset: 0, 0
-  index: -1
-textfield
-  rotate: false
-  xy: 254, 52
-  size: 14, 14
-  split: 3, 3, 3, 3
-  orig: 14, 14
-  offset: 0, 0
-  index: -1
-check-off
-  rotate: false
-  xy: 254, 52
-  size: 14, 14
-  orig: 14, 14
+  xy: 151, 0
+  size: 3, 5
+  split: 0, 0, 0, 5
+  orig: 3, 5
   offset: 0, 0
   index: -1
 default-pane
   rotate: false
-  xy: 254, 49
+  xy: 155, 2
   size: 5, 3
   split: 1, 1, 1, 1
   orig: 5, 3
@@ -91,30 +60,15 @@ default-pane
   index: -1
 default-rect-pad
   rotate: false
-  xy: 254, 49
+  xy: 155, 2
   size: 5, 3
   split: 1, 1, 1, 1
   orig: 5, 3
   offset: 0, 0
   index: -1
-selection
-  rotate: false
-  xy: 254, 48
-  size: 1, 1
-  orig: 1, 1
-  offset: 0, 0
-  index: -1
-default-pane-noborder
-  rotate: false
-  xy: 255, 48
-  size: 1, 1
-  split: 0, 0, 0, 0
-  orig: 1, 1
-  offset: 0, 0
-  index: -1
 default-splitpane
   rotate: false
-  xy: 259, 49
+  xy: 161, 2
   size: 5, 3
   split: 0, 5, 0, 0
   orig: 5, 3
@@ -122,7 +76,7 @@ default-splitpane
   index: -1
 default-rect
   rotate: false
-  xy: 264, 49
+  xy: 167, 2
   size: 3, 3
   split: 1, 1, 1, 1
   orig: 3, 3
@@ -130,29 +84,22 @@ default-rect
   index: -1
 default-rect-down
   rotate: false
-  xy: 267, 49
+  xy: 171, 2
   size: 3, 3
   split: 1, 1, 1, 1
   orig: 3, 3
   offset: 0, 0
   index: -1
-check-on
-  rotate: false
-  xy: 268, 52
-  size: 14, 14
-  orig: 14, 14
-  offset: 0, 0
-  index: -1
 white
   rotate: false
-  xy: 270, 49
+  xy: 175, 2
   size: 3, 3
   orig: 3, 3
   offset: 0, 0
   index: -1
 default-select-selection
   rotate: false
-  xy: 273, 49
+  xy: 179, 2
   size: 3, 3
   split: 1, 1, 1, 1
   orig: 3, 3
@@ -160,61 +107,54 @@ default-select-selection
   index: -1
 cursor
   rotate: false
-  xy: 276, 49
+  xy: 183, 2
   size: 3, 3
   split: 1, 1, 1, 1
   orig: 3, 3
   offset: 0, 0
   index: -1
-tree-plus
+quitter
   rotate: false
-  xy: 282, 52
-  size: 14, 14
-  orig: 14, 14
-  offset: 0, 0
-  index: -1
-transparent
-  rotate: false
-  xy: 288, 2
-  size: 50, 50
+  xy: 202, 3
+  size: 46, 53
   split: 0, 0, 0, 0
-  orig: 50, 50
+  orig: 46, 53
   offset: 0, 0
   index: -1
-tree-minus
+carte8
   rotate: false
-  xy: 296, 52
-  size: 14, 14
-  orig: 14, 14
+  xy: 249, 8
+  size: 48, 48
+  split: 5, 6, 6, 5
+  orig: 48, 48
   offset: 0, 0
   index: -1
-ButtonUp9
+carte0
   rotate: false
-  xy: 310, 57
-  size: 9, 9
-  split: 1, 1, 1, 1
-  orig: 9, 9
+  xy: 298, 8
+  size: 48, 48
+  split: 6, 0, 5, 5
+  orig: 48, 48
   offset: 0, 0
   index: -1
-default-splitpane-vertical
+default
   rotate: false
-  xy: 310, 52
-  size: 3, 5
-  split: 0, 0, 0, 5
-  orig: 3, 5
+  xy: 302, 126
+  size: 254, 77
+  orig: 254, 77
   offset: 0, 0
   index: -1
-ButtonDown9
+jouer
   rotate: false
-  xy: 319, 57
-  size: 9, 9
-  split: 1, 1, 1, 1
-  orig: 9, 9
+  xy: 302, 66
+  size: 160, 59
+  split: 0, 2, 0, 0
+  orig: 160, 59
   offset: 0, 0
   index: -1
 default-slider
   rotate: false
-  xy: 328, 58
+  xy: 302, 57
   size: 8, 8
   split: 2, 2, 2, 2
   orig: 8, 8
@@ -222,7 +162,7 @@ default-slider
   index: -1
 options
   rotate: false
-  xy: 338, 8
+  xy: 347, 7
   size: 58, 58
   split: 1, 0, 0, 0
   orig: 58, 58
@@ -230,7 +170,7 @@ options
   index: -1
 annuler
   rotate: false
-  xy: 396, 8
+  xy: 406, 7
   size: 58, 58
   split: 2, 6, 12, 9
   orig: 58, 58
@@ -238,143 +178,163 @@ annuler
   index: -1
 retour
   rotate: false
-  xy: 414, 67
+  xy: 463, 67
   size: 58, 58
   split: 5, 7, 13, 5
   orig: 58, 58
   offset: 0, 0
   index: -1
-quitter
+carte9
   rotate: false
-  xy: 454, 14
-  size: 46, 53
-  split: 0, 0, 0, 0
-  orig: 46, 53
+  xy: 465, 18
+  size: 48, 48
+  split: 6, 5, 6, 5
+  orig: 48, 48
   offset: 0, 0
   index: -1
-carte6
+textfield
   rotate: false
-  xy: 472, 77
+  xy: 465, 3
+  size: 14, 14
+  split: 3, 3, 3, 3
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+check-off
+  rotate: false
+  xy: 465, 3
+  size: 14, 14
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+check-on
+  rotate: false
+  xy: 480, 3
+  size: 14, 14
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+tree-plus
+  rotate: false
+  xy: 495, 3
+  size: 14, 14
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+tree-minus
+  rotate: false
+  xy: 510, 3
+  size: 14, 14
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+carte3
+  rotate: false
+  xy: 514, 18
   size: 48, 48
   split: 5, 5, 5, 5
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+ButtonUp9
+  rotate: false
+  xy: 525, 8
+  size: 9, 9
+  split: 1, 1, 1, 1
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+ButtonDown9
+  rotate: false
+  xy: 535, 8
+  size: 9, 9
+  split: 1, 1, 1, 1
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+carte5-neg
+  rotate: false
+  xy: 522, 77
+  size: 48, 48
+  split: 5, 5, 6, 5
   orig: 48, 48
   offset: 0, 0
   index: -1
 carte-box-neg
   rotate: false
-  xy: 500, 4
+  xy: 563, 3
   size: 73, 73
   split: 8, 8, 9, 8
   orig: 73, 73
   offset: 0, 0
   index: -1
-carte6-neg
+carte4-neg
   rotate: false
-  xy: 520, 77
-  size: 48, 48
-  split: 6, 5, 5, 5
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-carte1-neg
-  rotate: false
-  xy: 568, 77
+  xy: 557, 155
   size: 48, 48
   split: 5, 5, 5, 5
   orig: 48, 48
   offset: 0, 0
   index: -1
-carte3-neg
-  rotate: false
-  xy: 573, 29
-  size: 48, 48
-  split: 6, 5, 5, 5
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-default-window
-  rotate: false
-  xy: 573, 0
-  size: 27, 29
-  split: 4, 3, 20, 3
-  orig: 27, 29
-  offset: 0, 0
-  index: -1
 default-select
   rotate: false
-  xy: 600, 9
+  xy: 557, 134
   size: 27, 20
   split: 4, 14, 4, 4
   orig: 27, 20
   offset: 0, 0
   index: -1
-carte2
+carte6
   rotate: false
-  xy: 616, 77
-  size: 48, 48
-  split: 5, 5, 5, 6
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-carte-box
-  rotate: false
-  xy: 621, 29
-  size: 48, 48
-  split: 5, 6, 5, 5
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-default-round-large
-  rotate: false
-  xy: 627, 9
-  size: 20, 20
-  split: 5, 5, 5, 4
-  orig: 20, 20
-  offset: 0, 0
-  index: -1
-default-scroll
-  rotate: false
-  xy: 647, 9
-  size: 20, 20
-  split: 2, 2, 2, 2
-  orig: 20, 20
-  offset: 0, 0
-  index: -1
-default-round-down
-  rotate: false
-  xy: 667, 9
-  size: 12, 20
-  split: 5, 5, 5, 4
-  orig: 12, 20
-  offset: 0, 0
-  index: -1
-carte8-neg
-  rotate: false
-  xy: 664, 77
+  xy: 571, 85
   size: 48, 48
   split: 5, 5, 5, 5
   orig: 48, 48
   offset: 0, 0
   index: -1
-carte5
+default-round-large
   rotate: false
-  xy: 669, 29
+  xy: 585, 134
+  size: 20, 20
+  split: 5, 5, 5, 4
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+carte6-neg
+  rotate: false
+  xy: 606, 155
   size: 48, 48
-  split: 5, 5, 5, 6
+  split: 6, 5, 5, 5
   orig: 48, 48
   offset: 0, 0
   index: -1
-carte7
+default-scroll
   rotate: false
-  xy: 712, 77
+  xy: 606, 134
+  size: 20, 20
+  split: 2, 2, 2, 2
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+carte1-neg
+  rotate: false
+  xy: 620, 85
   size: 48, 48
-  split: 6, 6, 6, 5
+  split: 5, 5, 5, 5
   orig: 48, 48
+  offset: 0, 0
+  index: -1
+default-round-down
+  rotate: false
+  xy: 627, 134
+  size: 12, 20
+  split: 5, 5, 5, 4
+  orig: 12, 20
   offset: 0, 0
   index: -1
 default-round
   rotate: false
-  xy: 679, 9
+  xy: 640, 134
   size: 12, 20
   split: 5, 5, 5, 4
   orig: 12, 20
@@ -382,14 +342,78 @@ default-round
   index: -1
 default-slider-knob
   rotate: false
-  xy: 691, 11
+  xy: 653, 136
   size: 9, 18
   orig: 9, 18
   offset: 0, 0
   index: -1
+carte3-neg
+  rotate: false
+  xy: 655, 155
+  size: 48, 48
+  split: 6, 5, 5, 5
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+carte2
+  rotate: false
+  xy: 637, 36
+  size: 48, 48
+  split: 5, 5, 5, 6
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+default-window
+  rotate: false
+  xy: 637, 6
+  size: 27, 29
+  split: 4, 3, 20, 3
+  orig: 27, 29
+  offset: 0, 0
+  index: -1
+carte-box
+  rotate: false
+  xy: 669, 106
+  size: 48, 48
+  split: 5, 6, 5, 5
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+carte8-neg
+  rotate: false
+  xy: 704, 155
+  size: 48, 48
+  split: 5, 5, 5, 5
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+perso
+  rotate: false
+  xy: 686, 7
+  size: 103, 98
+  split: 0, 1, 0, 0
+  orig: 103, 98
+  offset: 0, 0
+  index: -1
+carte5
+  rotate: false
+  xy: 718, 106
+  size: 48, 48
+  split: 5, 5, 5, 6
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+carte7
+  rotate: false
+  xy: 753, 155
+  size: 48, 48
+  split: 6, 6, 6, 5
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
 carte4
   rotate: false
-  xy: 717, 29
+  xy: 767, 106
   size: 48, 48
   split: 5, 5, 5, 5
   orig: 48, 48
@@ -397,7 +421,7 @@ carte4
   index: -1
 carte9-neg
   rotate: false
-  xy: 760, 77
+  xy: 802, 155
   size: 48, 48
   split: 5, 5, 6, 5
   orig: 48, 48
@@ -405,7 +429,7 @@ carte9-neg
   index: -1
 carte2-neg
   rotate: false
-  xy: 808, 77
+  xy: 816, 106
   size: 48, 48
   split: 5, 5, 5, 5
   orig: 48, 48
@@ -413,7 +437,7 @@ carte2-neg
   index: -1
 carte7-neg
   rotate: false
-  xy: 765, 29
+  xy: 790, 57
   size: 48, 48
   split: 5, 5, 5, 5
   orig: 48, 48
@@ -421,7 +445,7 @@ carte7-neg
   index: -1
 carte1
   rotate: false
-  xy: 813, 29
+  xy: 790, 8
   size: 48, 48
   split: 5, 5, 5, 5
   orig: 48, 48

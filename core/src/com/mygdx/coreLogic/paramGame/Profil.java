@@ -2,14 +2,20 @@ package com.mygdx.coreLogic.paramGame;
 
 public class Profil {
 
+	private static Profil currentJoueur = null;
 	String nom;
 	int chapEnCourt;
 	int nivEnCourt;
 	int nbEtoile;
 	String img;
 	
-	/*
+	/**
 	 * Constructeur de la classe Profil
+	 * @param nom
+	 * @param chap
+	 * @param niv
+	 * @param nb
+	 * @param img
 	 */
 	public Profil (String nom, int chap, int niv, int nb, String img){
 		this.nom = nom;
@@ -97,6 +103,20 @@ public class Profil {
 	 */
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+
+	public Chapitre getChapitre() {
+		return Test.buildChapitre();
+	}
+
+	
+	public static Profil getCurrentJoueur() {
+		return currentJoueur;
+	}
+
+	public static void setCurrentJoueur(Profil currentJoueur) {
+		Profil.currentJoueur = currentJoueur;
 	}
 	
 	

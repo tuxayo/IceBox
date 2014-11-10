@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
+import com.mygdx.coreLogic.paramGame.paramGame;
 
 
 public class SlotSourceDeck extends Source {
@@ -23,7 +24,7 @@ public class SlotSourceDeck extends Source {
 	public Payload dragStart(InputEvent event, float x, float y, int pointer) {
 
 		Payload payload = new Payload();
-		Slot payloadSlot = new Slot(sourceSlot.getCard(), sourceSlot.getSide());
+		Slot payloadSlot = new Slot(sourceSlot);
 		payload.setObject(payloadSlot);
 
 		TextureAtlas icons = new TextureAtlas("ui/uiskin.pack");	
@@ -51,9 +52,15 @@ public class SlotSourceDeck extends Source {
 		if (target != null) {
 			Slot targetSlot = ((SlotActor) target.getActor()).getSlot();
 			
-			if (targetSlot.getCard() == null ) {
+			if (targetSlot.getCard() == null && !targetSlot.isSuspended() && !payloadSlot.isSuspended()) {
+				
+				paramGame.getController().saveLastMove();
+				
 				targetSlot.add(payloadSlot.getCard());
 			}
+						
+			boolean isValid = paramGame.getController().Verification(payloadSlot.getCard(), targetSlot.getSide());
+			System.out.println("isValidDrop : " + isValid);
 		}
 	}
 }

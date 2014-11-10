@@ -10,6 +10,7 @@ public class SlotActorDeck extends SlotActor {
 	public SlotActorDeck(Skin skin, Slot slot) {
 		super(skin, slot);
 		clickRetournerCarte = new ClickDeckListener();
+		
 		/* On ajoute le fait que dans le deck on puisse clické pour retourner une carte */
 		addListener(clickRetournerCarte);
 	}
@@ -17,4 +18,5 @@ public class SlotActorDeck extends SlotActor {
 	public void removeClickDeckListener() {
 		removeListener(clickRetournerCarte);
 	}
+	
 }

@@ -23,6 +23,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.Assets;
+import com.mygdx.coreLogic.paramGame.Profil;
+import com.mygdx.coreLogic.paramGame.paramGame;
 
 public class LevelScreen implements Screen {
 
@@ -47,7 +49,6 @@ public class LevelScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-//		stage.setViewport(width, height, false);
 		table.invalidateHierarchy();
 	}
 
@@ -78,7 +79,7 @@ public class LevelScreen implements Screen {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-//				((Game) Gdx.app.getApplicationListener()).setScreen(new Play());
+				paramGame.setJoueur(new Profil("dd", 1, 1, 1, null));
 				((Game) Gdx.app.getApplicationListener()).setScreen(new PlayScreen());
 			}
 

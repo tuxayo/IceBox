@@ -10,12 +10,12 @@ public class Chapitre {
 	/**
 	 * Le constructeur qui prend deux paramètres et qui initialise la liste.
 	 * @param img
-	 * @param nb
+	 * @param nbEtoile
 	 */
-	public Chapitre(String img, int nb){
+	public Chapitre(String img, int nbEtoile){
 		this.niv = new LinkedList<Niveau>();
 		this.img = img;
-		this.nbEtoile = nb;
+		this.nbEtoile = nbEtoile;
 	}
 	
 	/**
@@ -93,5 +93,9 @@ public class Chapitre {
 			System.out.println("/*/*/*/*/*/*/*/*/*Niveau "+(i+1)+"/*/*/*/*/*/*/*/*/*");
 			niv.get(i).affiche();
 		}
+	}
+
+	public Niveau getNiveau() {
+		return niv.get(8);
 	}
 }

@@ -12,30 +12,31 @@ public class SlotTargetPane extends Target {
 	public SlotTargetPane(SlotActor actor) {
 		super(actor);
 		targetSlot = actor.getSlot();
-//		getActor().setColor(Color.LIGHT_GRAY);
+		//		getActor().setColor(Color.LIGHT_GRAY);
 	}
 
 	@Override
 	public boolean drag(Source source, Payload payload, float x, float y, int pointer) {
+
 		Slot payloadSlot = (Slot) payload.getObject();
-		
+
 		if (targetSlot.getSide() == payloadSlot.getSide() || payloadSlot.getSide() == PaneSide.CENTER) {
-//			getActor().setColor(Color.WHITE);
+			//			getActor().setColor(Color.WHITE);
 			return true;
 		} else {
-//			getActor().setColor(Color.DARK_GRAY);
+			//			getActor().setColor(Color.DARK_GRAY);
 			return false;
 		}
 	}
 
 	@Override
-	public void drop(Source source, Payload payload, float x, float y, int pointer) {
+	public void drop(Source source, Payload payload, float x, float y, int pointer) {		
 	}
 
 	@Override
 	public void reset(Source source, Payload payload) {
-//		getActor().setColor(Color.LIGHT_GRAY);
+		//		getActor().setColor(Color.LIGHT_GRAY);
 	}
-	
+
 
 }

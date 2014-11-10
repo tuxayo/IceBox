@@ -56,7 +56,7 @@ public abstract class Carte {
 	
 	@Override
 	public String toString() {
-		return Integer.toString(valeur);
+		return Integer.toString(valeur).replace('-', '~');
 	}
 	
 	/**
@@ -92,10 +92,12 @@ public abstract class Carte {
 	public abstract boolean isOpposite(Carte other);
 
 
+	/**
+	 * Predicat pour tester si la carte est la carte Box
+	 * @return True si la carte est la carte Box, False si non.
+	 */
 	public boolean isCarteBox() {
 		return textureRegion.equals("carte-box");
 	}
-
-
 
 }

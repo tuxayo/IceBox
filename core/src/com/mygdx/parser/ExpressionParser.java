@@ -22,6 +22,9 @@ public class ExpressionParser {
 
 		ExpressionTree l,r;
 
+		if (expression == null || expression.equals(";"))
+			return new Constant(0);
+		
 		for (;tokens.hasMoreTokens();) {
 			String token = tokens.nextToken();;
 

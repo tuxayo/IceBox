@@ -21,10 +21,11 @@ public class Niveau {
 
 	private int nbEtoile;
 	private String img;
+	
 	private ArrayList<Carte> cartedroite;
 	private ArrayList<Carte> cartegauche;
 	private ArrayList<Carte> cartedecks;
-
+	
 	static Document read = null;
 	Element pd, pg, deck;
 
@@ -172,5 +173,7 @@ public class Niveau {
 	public void setCartedecks(ArrayList<Carte> cartedecks) {
 		this.cartedecks = cartedecks;
 	}
+	
+	
 
 }

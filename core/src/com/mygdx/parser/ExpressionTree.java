@@ -12,6 +12,7 @@ public abstract class ExpressionTree {
 	/**
 	 * Parcours l'arbre de maniere postfixé afin d'obtenir une formule 
 	 * en Notation Polonaise Inverse pour s'affranchir du besoin des parenthèses
+	 * et obtenir une formule simplifié
 	 * @return La formule représenté par l'arbre en NPI
 	 */
 	public abstract String postfix();
@@ -19,10 +20,10 @@ public abstract class ExpressionTree {
 	
 	/**
 	 * Effectue les simplification arithmetique basique suivante (ou x est un nombre)
-	 * 	0 + x = x + 0 = x
-	 * 	1 * x = x * 1 = x
-	 *  x / 1 = x
-	 *  x / x = 1
+	 * 	0 + x = x + 0 = x,
+	 * 	1 * x = x * 1 = x,
+	 *  x / 1 = x,
+	 *  x / x = 1.
 	 * @return Un arbre qui représente la formule simplifiée
 	 */
 	public abstract ExpressionTree simplify();

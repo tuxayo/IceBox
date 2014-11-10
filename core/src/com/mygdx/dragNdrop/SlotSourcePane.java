@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
+import com.mygdx.coreLogic.paramGame.paramGame;
 
 
 public class SlotSourcePane extends Source {
@@ -24,10 +25,9 @@ public class SlotSourcePane extends Source {
 	public Payload dragStart(InputEvent event, float x, float y, int pointer) {
 
 		Payload payload = new Payload();
-		Slot payloadSlot = new Slot(sourceSlot.getCard(), sourceSlot.getSide());
+		Slot payloadSlot = new Slot(sourceSlot);
 		sourceSlot.take();
 		payload.setObject(payloadSlot);
-
 
 		TextureAtlas icons = new TextureAtlas("ui/uiskin.pack");	
 		TextureRegion icon = icons.findRegion(payloadSlot.getCard().getTextureRegion());
@@ -50,9 +50,21 @@ public class SlotSourcePane extends Source {
 	@Override
 	public void dragStop(InputEvent event, float x, float y, int pointer, Payload payload, Target target) {
 		Slot payloadSlot = (Slot) payload.getObject();
-
+		
+		
+		
 		if (target != null) {
 			Slot targetSlot = ((SlotActor) target.getActor()).getSlot();
+			
+			if (payloadSlot.isSuspended() || targetSlot.isSuspended()) {
+				sourceSlot.add(payloadSlot.getCard());
+				return;
+			}
+			
+			
+			paramGame.getController().saveLastMove();
+			
+			
 			if (targetSlot.getCard() == null) {
 				targetSlot.add(payloadSlot.getCard());				
 			} else if (targetSlot.isOpposite(payloadSlot)) {
@@ -60,8 +72,10 @@ public class SlotSourcePane extends Source {
 			} else {
 				sourceSlot.swapWith(targetSlot, payloadSlot);
 			}
+			
 		} else {
 			sourceSlot.add(payloadSlot.getCard());
 		}
+
 	}
 }
