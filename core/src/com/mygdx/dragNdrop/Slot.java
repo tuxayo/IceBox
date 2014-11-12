@@ -2,7 +2,6 @@ package com.mygdx.dragNdrop;
 
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.coreLogic.cards.Carte;
-import com.mygdx.coreLogic.paramGame.paramGame;
 
 
 public class Slot {
@@ -42,7 +41,7 @@ public class Slot {
 	 * @return True si la carte est la carte Box, False si non.
 	 */
 	public boolean isCarteBox() {
-		return item.isCarteBox();
+		return item != null && item.isCarteBox();
 	}
 	
 	public void addListener(SlotListener slotListener) {
@@ -76,6 +75,7 @@ public class Slot {
 		return false;
 	}
 
+	
 	public boolean take() {
 		item = null;
 		notifyListeners();
@@ -85,10 +85,7 @@ public class Slot {
 	private void notifyListeners() {		
 		for (SlotListener slotListener : slotListeners) {
 			slotListener.hasChanged(this);
-		}
-		
-		System.out.println("fin du jeu ? " + paramGame.getController().checkGameState());
-		System.out.println("simplifiés ? " + paramGame.getController().isSimpified());
+		}		
 	}
 
 	public Carte getCard() {

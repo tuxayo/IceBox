@@ -1,10 +1,10 @@
 package com.mygdx.dragNdrop;
 
-
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.mygdx.coreLogic.paramGame.paramGame;
+
 
 public class PaneActor extends Table {
 
@@ -32,20 +32,16 @@ public class PaneActor extends Table {
 				slotActor.addListener(slotActor.getClickDelCarteListener());
 
 			i++;
-			// toute les 5 cellule, on creer une nouvelle ligne
-			if (i % 4 == 0) {
+			// toute les 6 cellules, on creer une nouvelle ligne
+			if (i % 6 == 0) {
 				row();
 			}
 
 		}
 
-		defaults().space(4);
-		row().fill().expandX();
-		//		setDebug(true, true);
-
-		
+		defaults().space(6);
+		row().fill().expandX();		
 		pack();
-
 		setVisible(true);
 	}
 
@@ -63,24 +59,23 @@ public class PaneActor extends Table {
 			dragAndDrop.addSource(new SlotSourcePane(slotActor));
 			dragAndDrop.addTarget(new SlotTargetPane(slotActor));
 			add(slotActor);
-
+			
 
 			if (slot.isZero())
 				slotActor.addListener(slotActor.getClickDelCarteListener());
 
 			i++;
-			// toute les 5 cellule, on creer une nouvelle ligne
-			if (i % 4 == 0) {
+			// toute les 6 cellule, on creer une nouvelle ligne
+			if (i % 6 == 0) {
 				row();
 			}
 
 		}
 
-		defaults().space(4);
+		defaults().space(6);
 		row().fill().expandX();
 		//		setDebug(true, true);
 
-		
 		pack();
 
 		setVisible(true);
@@ -146,6 +141,20 @@ public class PaneActor extends Table {
 	}
 
 
+	/**
+	 * Predicat pour tester le panneau contient la carte Box. 
+	 * @return True si la carte Box est presente dans ce panneau False si non.
+	 */
+	public boolean containBoxCard() {
+
+		for (Slot slot : pane.getSlots())
+			if (slot.isCarteBox()) return true;
+
+		return false;
+
+	}
+	
+	
 	public Pane getPane() {
 		return pane;
 	}

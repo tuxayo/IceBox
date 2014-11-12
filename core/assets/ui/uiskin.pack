@@ -5,328 +5,325 @@ filter: Nearest,Nearest
 repeat: none
 oeuf
   rotate: false
-  xy: 0, 3
+  xy: 0, 160
   size: 150, 200
   split: 0, 0, 1, 0
   orig: 150, 200
   offset: 0, 0
   index: -1
-selection
+perso2
   rotate: false
-  xy: 0, 1
-  size: 1, 1
-  orig: 1, 1
+  xy: 151, 195
+  size: 175, 165
+  split: 0, 0, 1, 0
+  orig: 175, 165
   offset: 0, 0
   index: -1
-default-pane-noborder
+perso4
   rotate: false
-  xy: 2, 1
-  size: 1, 1
+  xy: 327, 195
+  size: 175, 165
   split: 0, 0, 0, 0
-  orig: 1, 1
+  orig: 175, 165
   offset: 0, 0
   index: -1
 perso1
   rotate: false
-  xy: 151, 57
-  size: 150, 146
+  xy: 503, 195
+  size: 175, 165
   split: 1, 0, 0, 0
-  orig: 150, 146
+  orig: 175, 165
+  offset: 0, 0
+  index: -1
+perso3
+  rotate: false
+  xy: 679, 195
+  size: 175, 165
+  split: 0, 0, 0, 0
+  orig: 175, 165
+  offset: 0, 0
+  index: -1
+default
+  rotate: false
+  xy: 151, 117
+  size: 254, 77
+  orig: 254, 77
+  offset: 0, 0
+  index: -1
+perso
+  rotate: false
+  xy: 406, 29
+  size: 175, 165
+  split: 0, 0, 0, 0
+  orig: 175, 165
+  offset: 0, 0
+  index: -1
+jouer
+  rotate: false
+  xy: 582, 135
+  size: 158, 59
+  split: 1, 0, 0, 0
+  orig: 158, 59
+  offset: 0, 0
+  index: -1
+quitter
+  rotate: false
+  xy: 0, 57
+  size: 95, 102
+  split: 0, 0, 1, 0
+  orig: 95, 102
+  offset: 0, 0
+  index: -1
+option
+  rotate: false
+  xy: 582, 51
+  size: 100, 83
+  split: 0, 0, 1, 0
+  orig: 100, 83
+  offset: 0, 0
+  index: -1
+carte8
+  rotate: false
+  xy: 0, 0
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte0
+  rotate: false
+  xy: 57, 0
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+01T
+  rotate: false
+  xy: 741, 122
+  size: 79, 72
+  split: 0, 0, 0, 0
+  orig: 79, 72
   offset: 0, 0
   index: -1
 transparent
   rotate: false
-  xy: 151, 6
+  xy: 582, 0
   size: 50, 50
   split: 0, 0, 0, 0
   orig: 50, 50
   offset: 0, 0
   index: -1
-default-splitpane-vertical
-  rotate: false
-  xy: 151, 0
-  size: 3, 5
-  split: 0, 0, 0, 5
-  orig: 3, 5
-  offset: 0, 0
-  index: -1
-default-pane
-  rotate: false
-  xy: 155, 2
-  size: 5, 3
-  split: 1, 1, 1, 1
-  orig: 5, 3
-  offset: 0, 0
-  index: -1
-default-rect-pad
-  rotate: false
-  xy: 155, 2
-  size: 5, 3
-  split: 1, 1, 1, 1
-  orig: 5, 3
-  offset: 0, 0
-  index: -1
-default-splitpane
-  rotate: false
-  xy: 161, 2
-  size: 5, 3
-  split: 0, 5, 0, 0
-  orig: 5, 3
-  offset: 0, 0
-  index: -1
-default-rect
-  rotate: false
-  xy: 167, 2
-  size: 3, 3
-  split: 1, 1, 1, 1
-  orig: 3, 3
-  offset: 0, 0
-  index: -1
-default-rect-down
-  rotate: false
-  xy: 171, 2
-  size: 3, 3
-  split: 1, 1, 1, 1
-  orig: 3, 3
-  offset: 0, 0
-  index: -1
-white
-  rotate: false
-  xy: 175, 2
-  size: 3, 3
-  orig: 3, 3
-  offset: 0, 0
-  index: -1
-default-select-selection
-  rotate: false
-  xy: 179, 2
-  size: 3, 3
-  split: 1, 1, 1, 1
-  orig: 3, 3
-  offset: 0, 0
-  index: -1
-cursor
-  rotate: false
-  xy: 183, 2
-  size: 3, 3
-  split: 1, 1, 1, 1
-  orig: 3, 3
-  offset: 0, 0
-  index: -1
-quitter
-  rotate: false
-  xy: 202, 3
-  size: 46, 53
-  split: 0, 0, 0, 0
-  orig: 46, 53
-  offset: 0, 0
-  index: -1
-carte8
-  rotate: false
-  xy: 249, 8
-  size: 48, 48
-  split: 5, 6, 6, 5
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-carte0
-  rotate: false
-  xy: 298, 8
-  size: 48, 48
-  split: 6, 0, 5, 5
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-default
-  rotate: false
-  xy: 302, 126
-  size: 254, 77
-  orig: 254, 77
-  offset: 0, 0
-  index: -1
-jouer
-  rotate: false
-  xy: 302, 66
-  size: 160, 59
-  split: 0, 2, 0, 0
-  orig: 160, 59
-  offset: 0, 0
-  index: -1
-default-slider
-  rotate: false
-  xy: 302, 57
-  size: 8, 8
-  split: 2, 2, 2, 2
-  orig: 8, 8
-  offset: 0, 0
-  index: -1
-options
-  rotate: false
-  xy: 347, 7
-  size: 58, 58
-  split: 1, 0, 0, 0
-  orig: 58, 58
-  offset: 0, 0
-  index: -1
-annuler
-  rotate: false
-  xy: 406, 7
-  size: 58, 58
-  split: 2, 6, 12, 9
-  orig: 58, 58
-  offset: 0, 0
-  index: -1
-retour
-  rotate: false
-  xy: 463, 67
-  size: 58, 58
-  split: 5, 7, 13, 5
-  orig: 58, 58
-  offset: 0, 0
-  index: -1
 carte9
   rotate: false
-  xy: 465, 18
-  size: 48, 48
-  split: 6, 5, 6, 5
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-textfield
-  rotate: false
-  xy: 465, 3
-  size: 14, 14
-  split: 3, 3, 3, 3
-  orig: 14, 14
-  offset: 0, 0
-  index: -1
-check-off
-  rotate: false
-  xy: 465, 3
-  size: 14, 14
-  orig: 14, 14
-  offset: 0, 0
-  index: -1
-check-on
-  rotate: false
-  xy: 480, 3
-  size: 14, 14
-  orig: 14, 14
-  offset: 0, 0
-  index: -1
-tree-plus
-  rotate: false
-  xy: 495, 3
-  size: 14, 14
-  orig: 14, 14
-  offset: 0, 0
-  index: -1
-tree-minus
-  rotate: false
-  xy: 510, 3
-  size: 14, 14
-  orig: 14, 14
+  xy: 855, 304
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
   offset: 0, 0
   index: -1
 carte3
   rotate: false
-  xy: 514, 18
-  size: 48, 48
-  split: 5, 5, 5, 5
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-ButtonUp9
-  rotate: false
-  xy: 525, 8
-  size: 9, 9
-  split: 1, 1, 1, 1
-  orig: 9, 9
-  offset: 0, 0
-  index: -1
-ButtonDown9
-  rotate: false
-  xy: 535, 8
-  size: 9, 9
-  split: 1, 1, 1, 1
-  orig: 9, 9
+  xy: 683, 78
+  size: 56, 56
+  split: 1, 0, 0, 0
+  orig: 56, 56
   offset: 0, 0
   index: -1
 carte5-neg
   rotate: false
-  xy: 522, 77
-  size: 48, 48
-  split: 5, 5, 6, 5
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-carte-box-neg
-  rotate: false
-  xy: 563, 3
-  size: 73, 73
-  split: 8, 8, 9, 8
-  orig: 73, 73
+  xy: 855, 247
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
   offset: 0, 0
   index: -1
 carte4-neg
   rotate: false
-  xy: 557, 155
-  size: 48, 48
-  split: 5, 5, 5, 5
-  orig: 48, 48
+  xy: 855, 190
+  size: 56, 56
+  split: 0, 0, 1, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte6
+  rotate: false
+  xy: 740, 65
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte6-neg
+  rotate: false
+  xy: 683, 21
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte1-neg
+  rotate: false
+  xy: 740, 8
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+retour_niveau
+  rotate: false
+  xy: 96, 117
+  size: 47, 42
+  split: 0, 0, 0, 0
+  orig: 47, 42
+  offset: 0, 0
+  index: -1
+carte3-neg
+  rotate: false
+  xy: 96, 60
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte2
+  rotate: false
+  xy: 153, 60
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte-box
+  rotate: false
+  xy: 210, 60
+  size: 56, 56
+  split: 0, 0, 1, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte8-neg
+  rotate: false
+  xy: 267, 60
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte5
+  rotate: false
+  xy: 324, 60
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte7
+  rotate: false
+  xy: 114, 3
+  size: 56, 56
+  split: 1, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte4
+  rotate: false
+  xy: 171, 3
+  size: 56, 56
+  split: 0, 0, 1, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte9-neg
+  rotate: false
+  xy: 228, 3
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte2-neg
+  rotate: false
+  xy: 285, 3
+  size: 56, 56
+  split: 1, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+carte7-neg
+  rotate: false
+  xy: 342, 3
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+retour_arriere
+  rotate: false
+  xy: 633, 8
+  size: 47, 42
+  split: 0, 0, 0, 0
+  orig: 47, 42
+  offset: 0, 0
+  index: -1
+carte1
+  rotate: false
+  xy: 797, 65
+  size: 56, 56
+  split: 0, 0, 0, 0
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+quitter_plateau
+  rotate: false
+  xy: 797, 24
+  size: 44, 40
+  split: 0, 0, 0, 1
+  orig: 44, 40
   offset: 0, 0
   index: -1
 default-select
   rotate: false
-  xy: 557, 134
+  xy: 681, 0
   size: 27, 20
   split: 4, 14, 4, 4
   orig: 27, 20
   offset: 0, 0
   index: -1
-carte6
-  rotate: false
-  xy: 571, 85
-  size: 48, 48
-  split: 5, 5, 5, 5
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
 default-round-large
   rotate: false
-  xy: 585, 134
+  xy: 709, 0
   size: 20, 20
   split: 5, 5, 5, 4
   orig: 20, 20
   offset: 0, 0
   index: -1
-carte6-neg
+default-window
   rotate: false
-  xy: 606, 155
-  size: 48, 48
-  split: 6, 5, 5, 5
-  orig: 48, 48
+  xy: 821, 165
+  size: 27, 29
+  split: 4, 3, 20, 3
+  orig: 27, 29
+  offset: 0, 0
+  index: -1
+default-slider-knob
+  rotate: false
+  xy: 730, 2
+  size: 9, 18
+  orig: 9, 18
   offset: 0, 0
   index: -1
 default-scroll
   rotate: false
-  xy: 606, 134
+  xy: 381, 96
   size: 20, 20
   split: 2, 2, 2, 2
   orig: 20, 20
   offset: 0, 0
   index: -1
-carte1-neg
-  rotate: false
-  xy: 620, 85
-  size: 48, 48
-  split: 5, 5, 5, 5
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
 default-round-down
   rotate: false
-  xy: 627, 134
+  xy: 821, 144
   size: 12, 20
   split: 5, 5, 5, 4
   orig: 12, 20
@@ -334,120 +331,155 @@ default-round-down
   index: -1
 default-round
   rotate: false
-  xy: 640, 134
+  xy: 381, 75
   size: 12, 20
   split: 5, 5, 5, 4
   orig: 12, 20
   offset: 0, 0
   index: -1
-default-slider-knob
+textfield
   rotate: false
-  xy: 653, 136
-  size: 9, 18
-  orig: 9, 18
+  xy: 381, 60
+  size: 14, 14
+  split: 3, 3, 3, 3
+  orig: 14, 14
   offset: 0, 0
   index: -1
-carte3-neg
+check-off
   rotate: false
-  xy: 655, 155
-  size: 48, 48
-  split: 6, 5, 5, 5
-  orig: 48, 48
+  xy: 381, 60
+  size: 14, 14
+  orig: 14, 14
   offset: 0, 0
   index: -1
-carte2
+check-on
   rotate: false
-  xy: 637, 36
-  size: 48, 48
-  split: 5, 5, 5, 6
-  orig: 48, 48
+  xy: 797, 9
+  size: 14, 14
+  orig: 14, 14
   offset: 0, 0
   index: -1
-default-window
+tree-plus
   rotate: false
-  xy: 637, 6
-  size: 27, 29
-  split: 4, 3, 20, 3
-  orig: 27, 29
+  xy: 834, 150
+  size: 14, 14
+  orig: 14, 14
   offset: 0, 0
   index: -1
-carte-box
+tree-minus
   rotate: false
-  xy: 669, 106
-  size: 48, 48
-  split: 5, 6, 5, 5
-  orig: 48, 48
+  xy: 812, 9
+  size: 14, 14
+  orig: 14, 14
   offset: 0, 0
   index: -1
-carte8-neg
+ButtonUp9
   rotate: false
-  xy: 704, 155
-  size: 48, 48
-  split: 5, 5, 5, 5
-  orig: 48, 48
+  xy: 842, 55
+  size: 9, 9
+  split: 1, 1, 1, 1
+  orig: 9, 9
   offset: 0, 0
   index: -1
-perso
+ButtonDown9
   rotate: false
-  xy: 686, 7
-  size: 103, 98
-  split: 0, 1, 0, 0
-  orig: 103, 98
+  xy: 821, 134
+  size: 9, 9
+  split: 1, 1, 1, 1
+  orig: 9, 9
   offset: 0, 0
   index: -1
-carte5
+default-slider
   rotate: false
-  xy: 718, 106
-  size: 48, 48
-  split: 5, 5, 5, 6
-  orig: 48, 48
+  xy: 797, 0
+  size: 8, 8
+  split: 2, 2, 2, 2
+  orig: 8, 8
   offset: 0, 0
   index: -1
-carte7
+default-splitpane-vertical
   rotate: false
-  xy: 753, 155
-  size: 48, 48
-  split: 6, 6, 6, 5
-  orig: 48, 48
+  xy: 402, 111
+  size: 3, 5
+  split: 0, 0, 0, 5
+  orig: 3, 5
   offset: 0, 0
   index: -1
-carte4
+default-pane
   rotate: false
-  xy: 767, 106
-  size: 48, 48
-  split: 5, 5, 5, 5
-  orig: 48, 48
+  xy: 849, 191
+  size: 5, 3
+  split: 1, 1, 1, 1
+  orig: 5, 3
   offset: 0, 0
   index: -1
-carte9-neg
+default-rect-pad
   rotate: false
-  xy: 802, 155
-  size: 48, 48
-  split: 5, 5, 6, 5
-  orig: 48, 48
+  xy: 849, 191
+  size: 5, 3
+  split: 1, 1, 1, 1
+  orig: 5, 3
   offset: 0, 0
   index: -1
-carte2-neg
+default-rect
   rotate: false
-  xy: 816, 106
-  size: 48, 48
-  split: 5, 5, 5, 5
-  orig: 48, 48
+  xy: 402, 107
+  size: 3, 3
+  split: 1, 1, 1, 1
+  orig: 3, 3
   offset: 0, 0
   index: -1
-carte7-neg
+default-rect-down
   rotate: false
-  xy: 790, 57
-  size: 48, 48
-  split: 5, 5, 5, 5
-  orig: 48, 48
+  xy: 402, 103
+  size: 3, 3
+  split: 1, 1, 1, 1
+  orig: 3, 3
   offset: 0, 0
   index: -1
-carte1
+white
   rotate: false
-  xy: 790, 8
-  size: 48, 48
-  split: 5, 5, 5, 5
-  orig: 48, 48
+  xy: 402, 99
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+default-select-selection
+  rotate: false
+  xy: 402, 95
+  size: 3, 3
+  split: 1, 1, 1, 1
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+default-splitpane
+  rotate: false
+  xy: 849, 187
+  size: 5, 3
+  split: 0, 5, 0, 0
+  orig: 5, 3
+  offset: 0, 0
+  index: -1
+cursor
+  rotate: false
+  xy: 144, 156
+  size: 3, 3
+  split: 1, 1, 1, 1
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+selection
+  rotate: false
+  xy: 681, 49
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+default-pane-noborder
+  rotate: false
+  xy: 730, 0
+  size: 1, 1
+  split: 0, 0, 0, 0
+  orig: 1, 1
   offset: 0, 0
   index: -1

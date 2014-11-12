@@ -16,9 +16,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
@@ -44,10 +42,6 @@ public class SettingsScreen implements Screen {
 			return Gdx.files.absolute(Gdx.files.external(IceBox.TITLE + "/levels").path()); // return default level directory
 	}
 
-	/** @return si vSync est activé */
-	public static boolean vSync() {
-		return Gdx.app.getPreferences(IceBox.TITLE).getBoolean("vsync");
-	}
 	
 	@Override
 	public void render(float delta) {
@@ -75,7 +69,7 @@ public class SettingsScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 
 		batch = new SpriteBatch();
-	    sprite = new Sprite(Assets.manager.get(Assets.splashScreen, Texture.class));
+	    sprite = new Sprite(Assets.manager.get(Assets.scene, Texture.class));
 		sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		sprite.setAlpha(0.7f);
 		
@@ -84,35 +78,25 @@ public class SettingsScreen implements Screen {
 		table = new Table(skin);
 		table.setFillParent(true);
 
-		final CheckBox vSyncCheckBox = new CheckBox("vSync", skin);
-		vSyncCheckBox.setChecked(vSync());
-
-		final TextField levelDirectoryInput = new TextField(levelDirectory().path(), skin); // creating a new TextField with the current level directory already written in it
-		levelDirectoryInput.setMessageText("level directory"); // set the text to be shown when nothing is in the TextField
+		final TextField levelDirectoryInput = new TextField(levelDirectory().path(), skin); 
+		levelDirectoryInput.setMessageText("level directory"); 
 
 		final ImageButton back = new ImageButton(skin, "back");
-		back.pad(10);
+		back.setSize(50, 50);
+		back.setPosition(Gdx.graphics.getWidth()-back.getWidth()+5, 
+				Gdx.graphics.getHeight()-back.getHeight()+5);
+		
 
 		ClickListener buttonHandler = new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				// event.getListenerActor() returns the source of the event, e.g. a button that was clicked
-				if(event.getListenerActor() == vSyncCheckBox) {
-					// save vSync
-					Gdx.app.getPreferences(IceBox.TITLE).putBoolean("vsync", vSyncCheckBox.isChecked());
 
-					// set vSync
-					Gdx.graphics.setVSync(vSync());
-
-					Gdx.app.log(IceBox.TITLE, "vSync " + (vSync() ? "enabled" : "disabled"));
-				} else if(event.getListenerActor() == back) {
-					// save level directory
-					String actualLevelDirectory = levelDirectoryInput.getText().trim().equals("") ? Gdx.files.getExternalStoragePath() + IceBox.TITLE + "/levels" : levelDirectoryInput.getText().trim(); // shortened form of an if-statement: [boolean] ? [if true] : [else] // String#trim() removes spaces on both sides of the string
+				if(event.getListenerActor() == back) {
+					
+					String actualLevelDirectory = levelDirectoryInput.getText().trim().equals("") ? Gdx.files.getExternalStoragePath() + IceBox.TITLE + "/levels" : levelDirectoryInput.getText().trim(); 
 					Gdx.app.getPreferences(IceBox.TITLE).putString("leveldirectory", actualLevelDirectory);
 
-					// save the settings to preferences file (Preferences#flush() writes the preferences in memory to the file)
-					Gdx.app.getPreferences(IceBox.TITLE).flush();
 
 					Gdx.app.log(IceBox.TITLE, "settings saved");
 
@@ -127,24 +111,19 @@ public class SettingsScreen implements Screen {
 			}
 		};
 
-		vSyncCheckBox.addListener(buttonHandler);
 
 		back.addListener(buttonHandler);
 
-		// putting everything in the table
-		table.add(new Label("SETTINGS", skin)).spaceBottom(50).colspan(3).expandX();
-		table.add(back).top().right().row();
-		table.add();
-		table.add("level directory");
-		table.add().row();
-		table.add(vSyncCheckBox).top().expandY();
-		table.add(levelDirectoryInput).top().fillX();
-
-		stage.addActor(table);
-
-		stage.addAction(sequence(moveTo(0, stage.getHeight()), moveTo(0, 0, .5f))); // coming in from top animation
+		table.add("PARAMETRES").colspan(5).top().padBottom(190);
+		table.row();
+		table.add("level directory").padBottom(190).padRight(50);
+		table.add(levelDirectoryInput).padBottom(190).fillX();
+		table.row();
 		
-		// On affiche dans la log que l'on soit bien dans la fenetre pricipale du jeu
+		stage.addActor(table);
+		stage.addActor(back);
+		stage.addAction(sequence(moveTo(0, stage.getHeight()), moveTo(0, 0, .5f)));
+		
 		Gdx.app.log("Jeu", "Dans le jeu"); 
 	}
 

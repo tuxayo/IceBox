@@ -32,8 +32,9 @@ com.badlogic.gdx.scenes.scene2d.ui.SelectBox$SelectBoxStyle: {
 },
 com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
 	default: { down: default-round-down, up: default-round },
-	back: {down: retour, up: retour},
-	play: {down: jouer, up: jouer}
+	back: {down: retour_arriere, up: retour_arriere},
+	play: {down: jouer, up: jouer},
+	player: { down: perso, up: perso}
 },
 com.badlogic.gdx.scenes.scene2d.ui.SplitPane$SplitPaneStyle: {
 	default-vertical: { handle: default-splitpane-vertical },

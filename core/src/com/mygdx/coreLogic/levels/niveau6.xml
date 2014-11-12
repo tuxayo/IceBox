@@ -1,13 +1,13 @@
 <niveau>
   <pg>
-    <carte value="0" url="image/carte0.png"></carte>
-	<carte value="2" url="image/carte2.png"></carte>
+    <carte value="0" url="carte0"></carte>
+	<carte value="2" url="carte2"></carte>
   </pg>
   <pd>
-    <carte value="x" url="image/carte-box.png"></carte>
-	<carte value="5" url="image/carte5.png"></carte>
+    <carte value="x" url="carte-box"></carte>
+	<carte value="5" url="carte5"></carte>
   </pd>
   <deck>
-  <carte value="5" url="image/carte5.png"></carte>
+  <carte value="5" url="carte5"></carte>
   </deck>
 </niveau>

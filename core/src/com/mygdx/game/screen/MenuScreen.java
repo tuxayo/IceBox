@@ -15,9 +15,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.Assets;
 import com.mygdx.game.tween.ActorAccessor;
@@ -27,17 +26,14 @@ public class MenuScreen implements Screen {
 
 	private Stage stage;
 	private Skin skin;
-	private Table table;
-	private TextButton buttonPlay, buttonExit;
 	private TweenManager tweenManager;
 	private Sprite sprite;
 	private SpriteBatch batch;
-	private Table buttonSettings;
 
 	@Override
 	public void render(float delta) {
 
-		Gdx.gl.glClearColor(1, 0.4f, 0.0f, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		tweenManager.update(delta);
@@ -53,7 +49,6 @@ public class MenuScreen implements Screen {
 	@Override
 	public void resize(int width, int height) {
 		stage.getViewport().update(width, height, true);
-		table.invalidateHierarchy();
 	}
 
 	@Override
@@ -63,30 +58,40 @@ public class MenuScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 		
 		batch = new SpriteBatch();
-	    sprite = new Sprite(Assets.manager.get(Assets.splashScreen, Texture.class));
+	    sprite = new Sprite(Assets.manager.get(Assets.menu, Texture.class));
 		sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		sprite.setAlpha(0.85f);
 		
 		skin = new Skin(Gdx.files.internal("ui/uiskin.json"), new TextureAtlas("ui/uiskin.pack"));
-
-		table = new Table(skin);
-		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
 		
+
 		// Creation des bouttons
-		buttonPlay = new TextButton("PLAY", skin, "default");
+		Image buttonSettings  = new Image(skin, "option");
+		Image buttonPlay	  = new Image(skin, "jouer");
+		Image buttonExit 	  = new Image(skin, "quitter");
+		Image buttonCredits   = new Image(skin, "01T");
+		
+		buttonSettings.setPosition(Gdx.graphics.getWidth()-buttonSettings.getWidth()-20, 20);
+		buttonSettings.setSize(70, 70);
+		
+		buttonPlay.setPosition((Gdx.graphics.getWidth()-buttonPlay.getWidth())/2, 20);
+		
+		buttonCredits.setPosition(20, 20);
+		buttonCredits.setSize(70, 70);
+		buttonExit.setPosition(Gdx.graphics.getWidth()-buttonExit.getWidth()-20, 
+				Gdx.graphics.getHeight()-buttonExit.getHeight()-20);
+		
 		buttonPlay.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				System.out.println("Button Play cliked!!");
-				( (Game) Gdx.app.getApplicationListener()).setScreen(new LevelScreen());
+				( (Game) Gdx.app.getApplicationListener()).setScreen(new SeclectProfileScreen());
 			}
 
 		});
-		buttonPlay.pad(20);
 
-		
-		buttonSettings = new TextButton("SETTINGS", skin, "default");
+
 		buttonSettings.addListener(new ClickListener() {
 
 			@Override
@@ -96,11 +101,8 @@ public class MenuScreen implements Screen {
 			}
 
 		});
-		buttonSettings.pad(20);
 
 
-		
-		buttonExit = new TextButton("EXIT", skin, "default");
 		buttonExit.addListener(new ClickListener() {
 
 			@Override
@@ -110,14 +112,12 @@ public class MenuScreen implements Screen {
 			}
 
 		});
-		buttonExit.pad(20);
 
 		
-		table.add(buttonPlay).spaceBottom(15).fillX().row();
-		table.add(buttonSettings).spaceBottom(15).fillX().row();
-		table.add(buttonExit).fillX();
-		
-		stage.addActor(table);
+		stage.addActor(buttonPlay);
+		stage.addActor(buttonSettings);
+		stage.addActor(buttonExit);
+		stage.addActor(buttonCredits);
 		
 		tweenManager = new TweenManager();
 		Tween.registerAccessor(Actor.class, new ActorAccessor());
@@ -128,15 +128,14 @@ public class MenuScreen implements Screen {
 		.push(Tween.set(buttonPlay, ActorAccessor.ALPHA).target(0))
 		.push(Tween.set(buttonExit, ActorAccessor.ALPHA).target(0))
 		.push(Tween.set(buttonSettings, ActorAccessor.ALPHA).target(0))
+		.push(Tween.set(buttonCredits, ActorAccessor.ALPHA).target(0))
 		.push(Tween.to(buttonPlay, ActorAccessor.ALPHA, .80f).target(1))
 		.push(Tween.to(buttonSettings, ActorAccessor.ALPHA, .80f).target(1))
 		.push(Tween.to(buttonExit, ActorAccessor.ALPHA, .80f).target(1))
+		.push(Tween.to(buttonCredits, ActorAccessor.ALPHA, .80f).target(1))
 		.end().start(tweenManager);
 
-		Tween.from(table, ActorAccessor.ALPHA, .75f).target(1).start(tweenManager);
-		Tween.from(table, ActorAccessor.Y, .75f).target(Gdx.graphics.getHeight() / 8).start(tweenManager);
-
-		Gdx.app.log("Menu", "Dans le menu rose"); // On affiche dans la log que l'on soit bien dans notre menu
+		Gdx.app.log("Menu", "Dans le menu"); // On affiche dans la log que l'on soit bien dans notre menu
 	}
 
 	@Override

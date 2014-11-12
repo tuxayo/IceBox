@@ -26,8 +26,7 @@ public class Niveau {
 	private ArrayList<Carte> cartegauche;
 	private ArrayList<Carte> cartedecks;
 	
-	static Document read = null;
-	Element pd, pg, deck;
+	private static Document read = null;
 
 	/**
 	 * Constructeur vide de la classe Niveau
@@ -45,7 +44,7 @@ public class Niveau {
 	 * 
 	 * @param file
 	 */
-	static void lirefichier(String file) {
+	private static void lirefichier(String file) {
 
 		SAXBuilder sax = new SAXBuilder();
 		try {
@@ -113,8 +112,9 @@ public class Niveau {
 	 * les cartes de la liste
 	 */
 	public void affiche() {
-		System.out.println("*********** Affichage de la partie gauche ***********");
 		Carte tmp;
+
+		System.out.println("*********** Affichage de la partie gauche ***********");
 		for (int i = 0; i < cartegauche.size(); i++) {
 			tmp= cartegauche.get(i);
 			tmp.afficheCarte();
@@ -173,7 +173,5 @@ public class Niveau {
 	public void setCartedecks(ArrayList<Carte> cartedecks) {
 		this.cartedecks = cartedecks;
 	}
-	
-	
 
 }

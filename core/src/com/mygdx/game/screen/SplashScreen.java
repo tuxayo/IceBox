@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.assets.Assets;
+import com.mygdx.coreLogic.paramGame.paramGame;
 import com.mygdx.game.tween.SpriteAccessor;
 
 
@@ -48,7 +49,7 @@ public class SplashScreen implements Screen {
 		tweenManager = new TweenManager();
 		Tween.registerAccessor(Sprite.class, new SpriteAccessor());
 
-		sprite = new Sprite(Assets.manager.get(Assets.splashScreen, Texture.class));
+		sprite = new Sprite(Assets.manager.get(Assets.splash, Texture.class));
 		sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	
 		Tween.set(sprite, SpriteAccessor.ALPHA).target(0).start(tweenManager);
@@ -63,6 +64,12 @@ public class SplashScreen implements Screen {
 
 		tweenManager.update(Float.MIN_VALUE); // Update une fois pour évité un flash avant l'apparition de l'image
 
+		
+		/**
+		 * Précharge les données pour le jeu
+		 */
+		paramGame.preload();
+		
 	}
 	
 	@Override

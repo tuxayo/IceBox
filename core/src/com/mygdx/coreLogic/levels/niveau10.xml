@@ -1,23 +1,23 @@
 <niveau>
   <pg>
-    <carte value="0" url="image/carte0.png"></carte>
-	<carte value="-8" url="image/carte8-neg.png"></carte>
-	<carte value="7" url="image/carte7.png"></carte>
-	<carte value="4" url="image/carte4.png"></carte>
-	<carte value="9" url="image/carte9.png"></carte>
-	<carte value="-4" url="image/carte4-neg.png"></carte>
+    <carte value="0" url="carte0"></carte>
+	<carte value="-8" url="carte8-neg"></carte>
+	<carte value="7" url="carte7"></carte>
+	<carte value="4" url="carte4"></carte>
+	<carte value="9" url="carte9"></carte>
+	<carte value="-4" url="carte4-neg"></carte>
   </pg>
   <pd>
-    <carte value="x" url="image/carte-box.png"></carte>
-	<carte value="0" url="image/carte0.png"></carte>
-	<carte value="-8" url="image/carte8-neg.png"></carte>
-	<carte value="0" url="image/carte0.png"></carte>
-	<carte value="7" url="image/carte7.png"></carte>
+    <carte value="x" url="carte-box"></carte>
+	<carte value="0" url="carte0"></carte>
+	<carte value="-8" url="carte8-neg"></carte>
+	<carte value="0" url="carte0"></carte>
+	<carte value="7" url="carte7"></carte>
   </pd>
   <deck>
-    <carte value="4" url="image/carte4.png"></carte>
-	<carte value="8" url="image/carte8.png"></carte>
-	<carte value="1" url="image/carte1.png"></carte>
-	<carte value="7" url="image/carte7.png"></carte>
+    <carte value="4" url="carte4"></carte>
+	<carte value="8" url="carte8"></carte>
+	<carte value="1" url="carte1"></carte>
+	<carte value="7" url="carte7"></carte>
   </deck>
 </niveau>

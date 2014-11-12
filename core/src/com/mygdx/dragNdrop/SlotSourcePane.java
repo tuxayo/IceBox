@@ -29,6 +29,8 @@ public class SlotSourcePane extends Source {
 		sourceSlot.take();
 		payload.setObject(payloadSlot);
 
+		if (payloadSlot.getCard() == null) return null;
+		
 		TextureAtlas icons = new TextureAtlas("ui/uiskin.pack");	
 		TextureRegion icon = icons.findRegion(payloadSlot.getCard().getTextureRegion());
 

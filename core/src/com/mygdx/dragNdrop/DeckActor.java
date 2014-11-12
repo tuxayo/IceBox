@@ -19,6 +19,7 @@ public class DeckActor extends Table {
 		this.dragAndDrop = paramGame.getDragAndDrop();
 		this.skin = paramGame.getSkin();
 		
+		
 		for (Slot slot : deck.getSlots()) {
 			SlotActor slotActor = new SlotActorDeck(skin, slot);
 			dragAndDrop.addSource(new SlotSourceDeck(slotActor));
@@ -29,8 +30,7 @@ public class DeckActor extends Table {
 
 		pack();
 
-		// cacher par defaut au niveau 1 par exemple
-		// setVisible(false);
+
 		setVisible(true);
 
 	}
@@ -51,8 +51,6 @@ public class DeckActor extends Table {
 
 		pack();
 
-		// cacher par defaut au niveau 1 par exemple
-		// setVisible(false);
 		setVisible(true);
 
 	}

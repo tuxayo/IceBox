@@ -1,23 +1,25 @@
 package com.mygdx.coreLogic.paramGame;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Chapitre {
-	LinkedList<Niveau> niv;
-	String img;
-	int nbEtoile;
-	
+
+	private LinkedList<Niveau> niv;
+	private String img;
+	private int nbEtoile;
+
 	/**
 	 * Le constructeur qui prend deux paramètres et qui initialise la liste.
 	 * @param img
 	 * @param nbEtoile
 	 */
-	public Chapitre(String img, int nbEtoile){
+	public Chapitre(String img, int nbEtoile) {
 		this.niv = new LinkedList<Niveau>();
 		this.img = img;
 		this.nbEtoile = nbEtoile;
 	}
-	
+
 	/**
 	 * Le constructeur vide de la classe Chapitre.
 	 */
@@ -25,10 +27,31 @@ public class Chapitre {
 		this.niv = new LinkedList<Niveau>();
 		this.img = null;
 		this.nbEtoile = 0;
+	}	
+	
+	
+	public static List<Chapitre> loadAllChapitre() {
+
+		List<Chapitre> allChapitre = new LinkedList<Chapitre>();
+		Chapitre chapitre = new Chapitre();
+		
+		for (int i = 1; i <= 10; i++) {
+			System.out.println("/*/*/*/*/*/*/*/*/*Niveau " + i + "/*/*/*/*/*/*/*/*/*");
+			Niveau niv = new Niveau();
+			niv.charger(paramGame.PATH_LVL + "niveau" + i + ".xml");
+			niv.affiche();
+			System.out.println("");
+			
+			chapitre.addNiveau(niv);
+			allChapitre.add(chapitre);
+		}
+		
+		return allChapitre;
 	}
 	
+
 	/**
-	 * Un getter qui retourne le niveau
+	 * Un getter qui retourne les niveaux de ce chapitre
 	 * @return niv
 	 */
 	public LinkedList<Niveau> getNiv() {
@@ -36,7 +59,7 @@ public class Chapitre {
 	}
 
 	/**
-	 * Modifie la valeur de niveau
+	 * Modifie la liste des niveaux de ce chapitre
 	 * @param niv
 	 */
 	public void setNiv(LinkedList<Niveau> niv) {
@@ -44,8 +67,8 @@ public class Chapitre {
 	}
 
 	/**
-	 * Retourne la valeur d'img
-	 * @return img
+	 * Retourne le nom de l'image qui représente 
+	 * @return Retourne l'image de ce chapitre
 	 */
 	public String getImg() {
 		return img;
@@ -75,27 +98,27 @@ public class Chapitre {
 		this.nbEtoile += nbEtoile;
 	}
 
-	
 	/**
-	 * Ajoute un niveau 
+	 * Ajoute un niveau au chapitre
 	 */
 	public void addNiveau (Niveau niv) {
 		this.niv.add(niv);
 	}
-	
+
 	/**
 	 * Affiche le chapitre
 	 */
 	public void afficheChap(){
 		System.out.println("l'image du niveau : " + this.img);
 		System.out.println("le nombre d'étoile du niveau : " + this.nbEtoile);
-		for(int i = 0; i<niv.size(); i++){
+		for(int i = 0; i < niv.size(); i++){
 			System.out.println("/*/*/*/*/*/*/*/*/*Niveau "+(i+1)+"/*/*/*/*/*/*/*/*/*");
 			niv.get(i).affiche();
 		}
 	}
 
-	public Niveau getNiveau() {
-		return niv.get(8);
+	public Niveau getNiveau(int i) {
+		return niv.get(i-1);
 	}
+
 }

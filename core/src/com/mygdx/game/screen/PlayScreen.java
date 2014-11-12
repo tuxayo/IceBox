@@ -7,6 +7,7 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 import aurelienribon.tweenengine.TweenManager;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -50,23 +51,25 @@ public class PlayScreen implements Screen {
 		sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
 		
-		
+		/**
+		 * Initialisation du contrôleur et des parametres du jeu
+		 */
 		paramGame.initGame();
 
 
 
 		Skin skin = new Skin(Gdx.files.internal("ui/uiskin.json"), new TextureAtlas("ui/uiskin.pack"));
 		
-		Image close = new Image(skin, "quitter");
-		close.setSize(50, 50);
-		close.setPosition(Gdx.graphics.getWidth() - close.getWidth(), 
-				Gdx.graphics.getHeight() - close.getHeight());
-
+		Image close = new Image(skin, "quitter_plateau");
+		close.setPosition(Gdx.graphics.getWidth()-close.getWidth()-10, 
+				Gdx.graphics.getHeight()-close.getHeight()-10);
+		
+		
 		close.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				stage.addAction(parallel(fadeOut(1f))); // coming in from top animation	
+				stage.addAction(parallel(fadeOut(1f))); // apparait d'en haut
 				Tween.set(sprite, SpriteAccessor.ALPHA).target(1).start(tweenManager);
 				Tween.to(sprite, SpriteAccessor.ALPHA, 0.8f).target(0.5f).setCallback( new TweenCallback() {
 
@@ -82,10 +85,10 @@ public class PlayScreen implements Screen {
 
 		});
 
-		Image undo = new Image(skin, "annuler");
-		undo.setSize(50, 50);
-		undo.setPosition(Gdx.graphics.getWidth() - (close.getWidth() + undo.getWidth() + 20), 
-				Gdx.graphics.getHeight() - undo.getHeight());
+		
+		Image undo = new Image(skin, "retour_arriere");
+		undo.setPosition(Gdx.graphics.getWidth()-(undo.getWidth() + close.getWidth())-30, 
+				Gdx.graphics.getHeight()-undo.getHeight()-10);
 
 		undo.addListener(new ClickListener() {
 
@@ -96,12 +99,27 @@ public class PlayScreen implements Screen {
 
 		});
 
+		
+		Image backToMenu = new Image(skin, "retour_niveau");
+		backToMenu.setPosition(10, Gdx.graphics.getHeight()-undo.getHeight()-10);
+
+		backToMenu.addListener(new ClickListener() {
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				((Game) Gdx.app.getApplicationListener()).setScreen(new MenuScreen());
+			}
+
+		});
+		
+		
 		stage.addActor(close);
 		stage.addActor(undo);
+		stage.addActor(backToMenu);
 		stage.addActor(paramGame.getDeckActor());
 		stage.addActor(paramGame.getLeftpaneActor());
 		stage.addActor(paramGame.getRightpaneActor());
-		
+
 	}
 
 

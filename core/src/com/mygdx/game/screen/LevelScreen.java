@@ -5,6 +5,8 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveTo;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 
+import java.util.LinkedList;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -23,7 +25,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.Assets;
-import com.mygdx.coreLogic.paramGame.Profil;
 import com.mygdx.coreLogic.paramGame.paramGame;
 
 public class LevelScreen implements Screen {
@@ -52,6 +53,7 @@ public class LevelScreen implements Screen {
 		table.invalidateHierarchy();
 	}
 
+	
 	@Override
 	public void show() {
 		stage = new Stage();
@@ -59,7 +61,7 @@ public class LevelScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 
 		batch = new SpriteBatch();
-	    sprite = new Sprite(Assets.manager.get(Assets.splashScreen, Texture.class));
+	    sprite = new Sprite(Assets.manager.get(Assets.scene, Texture.class));
 		sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		sprite.setAlpha(0.7f);
 		
@@ -68,10 +70,28 @@ public class LevelScreen implements Screen {
 		table = new Table(skin);
 		table.setFillParent(true);
 
-		List<String> list = new List<String>(skin);
-		list.setItems(new String[] {"Niveau 1", "Niveau 2", "Niveau 3"});
+		final List<String> list = new List<String>(skin);
+		
+		java.util.List<String> authorizedLevelList = new LinkedList<String>();
+		
+		for (int i = 1; i <= paramGame.getJoueur().getNivEnCourt(); i++) {
+			authorizedLevelList.add("Niveau " + i);
+		}
+
+		String[] authorizedLevelTab = new String[authorizedLevelList.size()];
+        authorizedLevelList.toArray(authorizedLevelTab);
+		list.setItems(authorizedLevelTab);
 
 		ScrollPane scrollPane = new ScrollPane(list, skin);
+		list.addListener(new ClickListener() {
+			
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				System.out.println(Integer.parseInt(list.getSelected().replaceAll("[^0-9]", "")));
+				paramGame.getJoueur().setNivEnCourt(
+						Integer.parseInt(list.getSelected().replaceAll("[^0-9]", "")));
+			}
+		});
 		
 		ImageButton play = new ImageButton(skin, "play");
 		play.setSize(50, 50);
@@ -79,7 +99,7 @@ public class LevelScreen implements Screen {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				paramGame.setJoueur(new Profil("dd", 1, 1, 1, null));
+
 				((Game) Gdx.app.getApplicationListener()).setScreen(new PlayScreen());
 			}
 
@@ -103,7 +123,8 @@ public class LevelScreen implements Screen {
 			}
 		});
 		back.pad(10);
-
+		back.setSize(50, 50);
+		
 		table.add(new Label("SELECT LEVEL", skin)).colspan(3).expandX().spaceBottom(50);
 		table.add(back).uniformX().top().right().row();
 		table.add(scrollPane).uniformX().expandY().top().left();
@@ -111,7 +132,7 @@ public class LevelScreen implements Screen {
 
 		stage.addActor(table);
 
-		stage.addAction(sequence(moveTo(0, stage.getHeight()), moveTo(0, 0, .5f))); // coming in from top animation
+		stage.addAction(sequence(moveTo(0, stage.getHeight()), moveTo(0, 0, .5f)));
 	}
 
 	@Override

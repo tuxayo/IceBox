@@ -10,9 +10,9 @@ public class Pane {
 	private Array<Slot> slots;
 
 	public Pane(PaneSide side) throws WrongSideException {
-		int emptySlot = 21;
-		slots = new Array<Slot>(21);
-		Niveau level = paramGame.getJoueur().getChapitre().getNiveau();
+		int emptySlot = 30;
+		slots = new Array<Slot>(30);
+		Niveau level = paramGame.getCurrentLevel();
 
 		if (side.equals(PaneSide.LEFT)) {
 			emptySlot -= level.getCartegauche().size();
@@ -36,7 +36,7 @@ public class Pane {
 	}
 
 	public Pane(Pane pane) {
-		slots = new Array<Slot>(21);
+		slots = new Array<Slot>(30);
 		
 		for (Slot slot : pane.getSlots())
 			slots.add(new Slot(slot));

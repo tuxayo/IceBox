@@ -2,6 +2,8 @@ package com.mygdx.coreLogic.controller;
 
 import java.util.Stack;
 
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.mygdx.coreLogic.cards.Carte;
 import com.mygdx.coreLogic.paramGame.paramGame;
@@ -23,7 +25,7 @@ public class ControllerGame {
 	private Stack<DeckActor> previous_pc = new Stack<DeckActor>();
 	private Stack<Carte> previous_cardLeft = new Stack<Carte>();
 	private Stack<Carte> previous_cardRight = new Stack<Carte>();
-	
+
 	private Carte cardLeft;
 	private Carte cardRight;
 
@@ -66,9 +68,9 @@ public class ControllerGame {
 			} else {
 				return false;
 			}
-			
+
 		} else if (side == PaneSide.LEFT) {
-			
+
 			if (cardLeft == null && cardRight == null) {
 				cardLeft = newcarte;
 				paramGame.getLeftpaneActor().suspends();
@@ -85,7 +87,7 @@ public class ControllerGame {
 			} else {
 				return false;
 			}
-			
+
 		} else {
 			return false;
 		}
@@ -93,25 +95,26 @@ public class ControllerGame {
 	}
 
 	/**
-	 * Renvoi {@code True} si un des deux panneau est vide 
+	 * Renvoi {@code True} si le panneau contenant la carte box est vide
 	 * @return Renvoie {@code True} si le niveau est fini {@code False} sinon
 	 */
 	public boolean checkGameState() {
-		return paramGame.getLeftpaneActor().isEmpty() || paramGame.getRightpaneActor().isEmpty();
+		return paramGame.getLeftpaneActor().isEmpty() && paramGame.getLeftpaneActor().containBoxCard() 
+				|| paramGame.getRightpaneActor().isEmpty() && paramGame.getRightpaneActor().containBoxCard();
 	}
-	
+
 	/**
 	 * Predicat pour savoir si les panneaux sont simplifiées ou non
 	 * @return retourne True si les deux panneaux sont simplifiées, False sinon
 	 */
 	public boolean isSimpified() {
-		
+
 		String leftExpr = paramGame.getLeftpaneActor().stringify();
 		String rightExpr = paramGame.getRightpaneActor().stringify();
 
 		ExpressionParser expL = new ExpressionParser(leftExpr);
 		ExpressionParser expR = new ExpressionParser(rightExpr);
-		
+
 		ExpressionParser expLSimpl = new ExpressionParser(leftExpr);
 		ExpressionParser expRSimpl = new ExpressionParser(rightExpr);
 
@@ -120,8 +123,8 @@ public class ControllerGame {
 
 		String simplLeftTree = null;
 		String simplRightTree = null;
-		
-		
+
+
 		try {
 			LeftTree = expL.parse().postfix();
 			RightTree = expR.parse().postfix();
@@ -130,17 +133,17 @@ public class ControllerGame {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		
-		
+
+
 		System.out.println("Expression gauche : " + LeftTree);
 		System.out.println(simplLeftTree);
-		
+
 		System.out.println("Expression droite : " + RightTree);
 		System.out.println(simplRightTree);		
-	
+
 
 		return LeftTree.equals(simplLeftTree) && RightTree.equals(simplRightTree);
-		
+
 	}
 
 	/**
@@ -148,45 +151,58 @@ public class ControllerGame {
 	 */
 	public void undo() {
 		System.out.println("undo !");	
-		
+
 		if (previous_pd.isEmpty() || previous_pg.isEmpty()) 
 			return;
-		
+
 		paramGame.setDragAndDrop(new DragAndDrop());
-		
+
 		paramGame.removeRightpaneActor();
 		paramGame.removeLeftpaneActor();
 		paramGame.removeDeckpaneActor();
-		
+
 		paramGame.setRightpaneActor(previous_pd.pop());
 		paramGame.setLeftpaneActor(previous_pg.pop());
 		paramGame.setDeckActor(previous_pc.pop());
-		
+
 		PlayScreen.stage.addActor(paramGame.getRightpaneActor());
 		PlayScreen.stage.addActor(paramGame.getLeftpaneActor());
 		PlayScreen.stage.addActor(paramGame.getDeckActor());
-		
+
 		cardLeft  = previous_cardLeft.pop();
 		cardRight = previous_cardRight.pop();
-		
+
 	}
-	
+
 	/**
 	 * Sauvegarde la configuration courrante du platteau
 	 */
 	public void saveLastMove() {
 		System.out.println("save !");	
-		
+
 		previous_pd.push(paramGame.getNewRightPaneActor());
 		previous_pg.push(paramGame.getNewLeftPaneActor());
 		previous_pc.push(paramGame.getNewDeckActor());
 		
 		previous_cardLeft.push(cardLeft);
 		previous_cardRight.push(cardRight);
+
+	}
+
+	public void checkEndLevel() {
+		if (paramGame.getController().checkGameState() && paramGame.getController().isSimpified()) {
+			
+			System.out.println("fini !!");
+			
+			/**
+			 * TODO Attention implementer une fonction dans paramGame qui automatise le 
+			 * passage d'un nouveau niveau et potentiellement un chapitre
+			 */
+			
+			paramGame.getJoueur().setNivEnCourt(paramGame.getJoueur().getNivEnCourt() + 1);
+			((Game) Gdx.app.getApplicationListener()).setScreen(new PlayScreen());
+		}
 		
 	}
 
-	
 }
-
-

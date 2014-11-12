@@ -12,7 +12,7 @@ public class Deck {
 	private Array<Slot> slots;
 
 	public Deck(PaneSide side) throws WrongSideException {
-		Niveau level = paramGame.getJoueur().getChapitre().getNiveau();
+		Niveau level = paramGame.getCurrentLevel();
 
 		slots = new Array<Slot>(level.getCartedecks().size());
 
@@ -27,7 +27,7 @@ public class Deck {
 
 	public Deck (Deck deck) {
 
-		Niveau level = paramGame.getJoueur().getChapitre().getNiveau();
+		Niveau level = paramGame.getCurrentLevel();
 		slots = new Array<Slot>(level.getCartedecks().size());
 
 		for (Slot slot : deck.getSlots())
