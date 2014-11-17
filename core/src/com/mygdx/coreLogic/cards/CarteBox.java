@@ -1,5 +1,11 @@
 package com.mygdx.coreLogic.cards;
 
+
+/**
+ * 
+ * Cette classe represente les cartes Box
+ *
+ */
 public class CarteBox extends Carte {
 
 	

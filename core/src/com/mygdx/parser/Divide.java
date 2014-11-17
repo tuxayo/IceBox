@@ -1,9 +1,17 @@
 package com.mygdx.parser;
 
+/**
+ * Represente un noeud qui modélise la division de deux arbres d'expression 
+ */
 public class Divide extends BinaryOperator {
 
 	public static final int neutralElem = 1;
 	
+	/**
+	 * Construit l'arbre qui represente la division entre left et right
+	 * @param left
+	 * @param right
+	 */
 	public Divide (ExpressionTree left, ExpressionTree right) {
 		super(left,right);
 	}

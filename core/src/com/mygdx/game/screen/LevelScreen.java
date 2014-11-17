@@ -1,6 +1,9 @@
 package com.mygdx.game.screen;
 
-
+/**
+ * Represente l'ecran de selection de niveau
+ *
+ */
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveTo;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
@@ -74,7 +77,7 @@ public class LevelScreen implements Screen {
 		
 		java.util.List<String> authorizedLevelList = new LinkedList<String>();
 		
-		for (int i = 1; i <= paramGame.getJoueur().getNivEnCourt(); i++) {
+		for (int i = 1; i <= paramGame.getInstance().getJoueur().getNivEnCourt(); i++) {
 			authorizedLevelList.add("Niveau " + i);
 		}
 
@@ -88,7 +91,7 @@ public class LevelScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				System.out.println(Integer.parseInt(list.getSelected().replaceAll("[^0-9]", "")));
-				paramGame.getJoueur().setNivEnCourt(
+				paramGame.getInstance().getJoueur().setNivEnCourt(
 						Integer.parseInt(list.getSelected().replaceAll("[^0-9]", "")));
 			}
 		});
@@ -107,7 +110,6 @@ public class LevelScreen implements Screen {
 		play.pad(15);
 
 		ImageButton back = new ImageButton(skin, "back");
-
 		back.addListener(new ClickListener() {
 
 			@Override

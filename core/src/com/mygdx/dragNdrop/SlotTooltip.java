@@ -5,11 +5,22 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 
+
+/**
+ * Represente une petite fenetre qui affiche les 
+ * informations un slot
+ *
+ */
 public class SlotTooltip extends Window implements SlotListener {
 
 	private Skin skin;
 	private Slot slot;
 
+	/**
+	 * Construit un slot affichant les information du slot passé en parametre
+	 * @param slot
+	 * @param skin
+	 */
 	public SlotTooltip(Slot slot, Skin skin) {
 		super("Tooltip...", skin);
 		this.slot = slot;
@@ -26,7 +37,6 @@ public class SlotTooltip extends Window implements SlotListener {
 			return;
 		}
 
-		// title displays the amount
 		setTitle("" + slot.getSide() + "x " + slot.getCard());
 		clear();
 		Label label = new Label("Carte " + slot.getCard(), skin);
@@ -37,8 +47,8 @@ public class SlotTooltip extends Window implements SlotListener {
 	@Override
 	public void setVisible(boolean visible) {
 		super.setVisible(visible);
-		// the listener sets this to true in case the slot is hovered
-		// however, we don't want that in case the slot is empty
+		// le listener positionne la visibilité a True quand un slot est survolée
+		// deplus on ne veut rien afficher si le slot est vide, 
 		if (slot.isEmpty()) {
 			super.setVisible(false);
 		}

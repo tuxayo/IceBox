@@ -16,15 +16,20 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+/**
+ *	Represente un Profil avec son nom, son nombre d'étoile, le numéro du chapitre 
+ *	en cours, le numéro du niveau en cours, l'image associée a ce profil
+ */
 public class Profil {
 
 	private static Document read;
-	String nom;
-	int chapEnCourt;
-	int nivEnCourt;
-	int nbEtoile;
-	String img;
+	private String nom;
+	private int chapEnCourt;
+	private int nivEnCourt;
+	private int nbEtoile;
+	private String img;
 
+	
 	/**
 	 * Constructeur de la classe Profil
 	 * @param nom
@@ -42,9 +47,9 @@ public class Profil {
 	}
 
 	/**
-	 * Récupère le profil du joueur {@link player}, Renvoi null si le joueur n'a pas été trouvé
-	 * @param file
-	 * @param player
+	 * Récupère le profil d'un joueur. Renvoi null si le joueur n'a pas été trouvé
+	 * @param file 
+	 * @param player le nom du joueur a réccupéré
 	 * @return Renvoi le profil de ce joueur, null si il n'existe pas
 	 */
 	public static Profil loadProfil(String file, String player) {
@@ -61,7 +66,8 @@ public class Profil {
 			Element joueur = (Element)i.next();
 
 			if ( joueur.getChildText("nom").equals(player)) {
-
+				String nomimg = joueur.getAttributeValue("nomimg");
+				
 				List<?> listechapitre= joueur.getChildren("chapitre");
 				Element dernierchapitre= (Element)(listechapitre.get(listechapitre.size()-1));
 
@@ -77,7 +83,7 @@ public class Profil {
 						Integer.parseInt(dernierchapitre.getText()), 
 						Integer.parseInt(dernierniveau.getText()), 
 						Integer.parseInt(dernierniveau.getAttributeValue("nb_etoile")), 
-						null);
+						nomimg);
 			}
 		}
 		return profil;
@@ -102,6 +108,7 @@ public class Profil {
 
 		while(i.hasNext()){
 			Element joueur = (Element)i.next();
+			String nomimg=joueur.getAttributeValue("nomimg");
 
 			List<?> listechapitre= joueur.getChildren("chapitre");
 			Element dernierchapitre= (Element)(listechapitre.get(listechapitre.size()-1));
@@ -118,7 +125,7 @@ public class Profil {
 							Integer.parseInt(dernierchapitre.getText().replaceAll("[^0-9]", "")), 
 							Integer.parseInt(dernierniveau.getText().replaceAll("[^0-9]", "")), 
 							Integer.parseInt(dernierniveau.getAttributeValue("nb_etoile")), 
-							null)
+							nomimg)
 						);
 
 		}
@@ -133,9 +140,6 @@ public class Profil {
 	 * Sauvegarde un profil
 	 * @param file
 	 * @param player
-	 * @param chapitre
-	 * @param niveau
-	 * @param nbetoile
 	 */
 	public static void saveProfil(String file, Profil player) {
 
@@ -145,6 +149,7 @@ public class Profil {
 		String chapitre = Integer.toString(player.getChapEnCourt());
 		String niveau = Integer.toString(player.getNivEnCourt());
 		String nbetoile = Integer.toString(player.getNbEtoile());
+		String img = player.getImg();
 
 		lirefichier(file);
 		boolean change = false;
@@ -157,6 +162,8 @@ public class Profil {
 			Element joueur = (Element)i.next();
 
 			if ( joueur.getChildText("nom").equals(name)){
+				Attribute nomimg = new Attribute("nomimg",img);
+				joueur.setAttribute(nomimg);
 				Element Echapitre = new Element("chapitre");
 				Echapitre.setText(chapitre);
 				joueur.addContent(Echapitre);
@@ -179,7 +186,7 @@ public class Profil {
 	}
 
 	/**
-	 * Sauvegarde le dernier niveau et le nombre d'etoile du joueur {@link player}
+	 * Sauvegarde le dernier niveau et le nombre d'etoile d'un joueur 
 	 * @param file
 	 * @param player
 	 */
@@ -209,7 +216,7 @@ public class Profil {
 				while(j.hasNext() && trouve==false){
 					Element Echapitre = (Element)j.next();
 
-					if ( Echapitre.getText().equals(chapitre)){
+					if ( Echapitre.getText().replaceAll("[^0-1]", "").equals(chapitre)){
 						Element Eniveau = new Element("niveau");
 						Eniveau.setText(niveau);
 						Echapitre.addContent(Eniveau);
@@ -399,13 +406,13 @@ public class Profil {
 	}
 
 	/**
-	 * Renvoi le chapitre {@link numChap} si il n'est pas supérieur au
+	 * Renvoi le chapitre demandé si il n'est pas supérieur au
 	 * dernier chapitre atteint par le joueur
-	 * @param numChap
-	 * @return Le chapitre {@link numChap}
+	 * @param numChap le numero du chapitre a réccupéré
+	 * @return Le chapitre demandée
 	 */
 	public Chapitre getChapitre(int numChap) {
-		return paramGame.getAllChapitres().get(
+		return paramGame.getInstance().getAllChapitres().get(
 				numChap > chapEnCourt ? chapEnCourt : numChap );
 	}
 
@@ -413,7 +420,7 @@ public class Profil {
 	 * @return Renvoie le dernier chapitre atteint par le joueur
 	 */
 	public Chapitre getLastChapitre() {
-		return paramGame.getAllChapitres().get(chapEnCourt);
+		return paramGame.getInstance().getAllChapitres().get(chapEnCourt);
 	}
 
 

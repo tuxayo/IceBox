@@ -4,12 +4,18 @@ import com.badlogic.gdx.Game;
 import com.mygdx.assets.Assets;
 import com.mygdx.game.screen.SplashScreen;
 
+
+/**
+ * Classe Pricipale du jeu ou est effectue un premier préchargement des images 
+ * utilisée dans la suite du jeu, et qui lance la fenetre du jeu avec le premier 
+ * "ecran"
+ */
 public class IceBox extends Game {
 	// VERSION : <numeroDuSprint> . <numeroSemaineDansSprint> . <NbfonctionaliteAjoutee>
-	public static final String TITLE = "Ice Box ", VERSION = "3.2.9";
+	public static final String TITLE = "Ice Box ", VERSION = "4.0.0";
 
 	@Override         
-	public void create() {  
+	public void create() {
 		Assets.load();
 		Assets.manager.finishLoading();
 

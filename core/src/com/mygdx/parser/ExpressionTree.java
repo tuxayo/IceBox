@@ -1,12 +1,15 @@
 package com.mygdx.parser;
 
+/**
+ * Modélise une expression arithmetique a l'aide d'un arbre binaire 
+ */
 public abstract class ExpressionTree {
 	
 	/**
 	 * Evalue l'arbre sur le quelle elle est appelé
 	 * @return la valeur de l'expression que represente l'arbre
 	 */
-	public abstract int    evaluate();
+	public abstract int evaluate();
 	
 	
 	/**
@@ -19,23 +22,23 @@ public abstract class ExpressionTree {
 	
 	
 	/**
-	 * Effectue les simplification arithmetique basique suivante (ou x est un nombre)
-	 * 	0 + x = x + 0 = x,
-	 * 	1 * x = x * 1 = x,
-	 *  x / 1 = x,
-	 *  x / x = 1.
+	 * Effectue les simplification arithmetique basique suivante (ou x est un nombre) <p/>
+	 * 	0 + x = x + 0 = x,  <p/>
+	 * 	1 * x = x * 1 = x,  <p/>
+	 *  x / 1 = x,  <p/>
+	 *  x / x = 1.  <p/>
 	 * @return Un arbre qui représente la formule simplifiée
 	 */
 	public abstract ExpressionTree simplify();
 	
 	
 	/**
-	 * Factory Method pour la construction d'un arbre representant 
-	 * l'expression : {@link left} {@link op} {@link right}
+	 * Fabrique  pour la construction d'un arbre representant 
+	 * l'expression : <b> left op right </b>  
 	 * @param op
 	 * @param left
 	 * @param right
-	 * @return Un arbre representant l'expression décrite par {@link left} {@link op} {@link right}
+	 * @return Un arbre representant l'expression décrite par <b> left op right </b>  
 	 */
 	public static ExpressionTree buildExpTree(String op, ExpressionTree left, ExpressionTree right)
 	{

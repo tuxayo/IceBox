@@ -10,7 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
 import com.mygdx.coreLogic.paramGame.paramGame;
 
-
+/**
+ * Défini une source valide pour un drag And Drop depuis un panneau, 
+ * et lui fourni un payload (ie l'information qui va etre du "Drand and Dropé")
+ * 
+ */
 public class SlotSourcePane extends Source {
 
 	private Slot sourceSlot;
@@ -64,7 +68,7 @@ public class SlotSourcePane extends Source {
 			}
 			
 			
-			paramGame.getController().saveLastMove();
+			paramGame.getInstance().getController().saveLastMove();
 			
 			
 			if (targetSlot.getCard() == null) {

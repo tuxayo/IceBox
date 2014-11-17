@@ -4,6 +4,9 @@ import aurelienribon.tweenengine.TweenAccessor;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
+/**
+ * Permet de faire varier la transparence des "sprites"
+ */
 public class SpriteAccessor implements TweenAccessor<Sprite> {
 
 	public static final int ALPHA = 0;

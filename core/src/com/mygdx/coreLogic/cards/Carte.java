@@ -3,11 +3,13 @@ package com.mygdx.coreLogic.cards;
 import javax.print.attribute.standard.MediaSize.Other;
 
 
-
+/**
+ * Classe abstraite qui sert de base a toutes les type de cartes 
+ */
 public abstract class Carte {
-	protected int valeur;
+	
+	protected int valeur; 
 	protected String textureRegion;
-
 
 	/**
 	 * Constructeur de la classe Carte qui prend deux paramètres.
@@ -31,7 +33,7 @@ public abstract class Carte {
 
 	/**
 	 * Modifie le nom de l'image associé à la carte.
-	 * @return img
+	 * @param img 
 	 */
 	public void setTextureRegion(String img) {
 		this.textureRegion = img;
@@ -61,6 +63,7 @@ public abstract class Carte {
 	
 	/**
 	 * Renvoie une nouvelle carte Zero
+	 * @return la nouvelle carte Zero
 	 */
 	public static Carte getCarteZero() {
 		return new CarteJeu("carte0", 0);
@@ -72,14 +75,14 @@ public abstract class Carte {
 	public abstract void afficheCarte();
 
 	/**
-	 * Retourne le nom de l'image associé à la carte opposée.
-	 * @return
+	 * 
+	 * @return Retourne le nom de l'image associé à la carte opposée.
 	 */
 	public abstract String getOppositeTexture();
 	
 	/**
-	 * Retourne une nouvelle carte qui est l'opposée de cette carte.
-	 * @return
+	 * 
+	 * @return Retourne une nouvelle carte qui est l'opposée de cette carte.
 	 */
 	public abstract Carte getOppositeCarte ();
 

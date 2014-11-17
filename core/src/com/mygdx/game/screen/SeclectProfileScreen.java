@@ -27,6 +27,10 @@ import com.mygdx.assets.Assets;
 import com.mygdx.coreLogic.paramGame.Profil;
 import com.mygdx.coreLogic.paramGame.paramGame;
 
+/**
+ * Represente l'écran de selection des profils
+ *
+ */
 public class SeclectProfileScreen implements Screen {
 
 	private Stage stage;
@@ -73,7 +77,7 @@ public class SeclectProfileScreen implements Screen {
 
 		savedPlayers.add("SELECTION DU JOUEUR").colspan(5).center().padBottom(90).padTop(15);
 
-		List<Profil> players = paramGame.getAllProfil();
+		List<Profil> players = paramGame.getInstance().getAllProfil();
 
 		savedPlayers.row();
 		for (int i = 0; i < 5; i++) {
@@ -84,7 +88,7 @@ public class SeclectProfileScreen implements Screen {
 				savedPlayer.setName("libre" + i);
 				savedPlayer.setColor(Color.LIGHT_GRAY);
 			} else {				
-				savedPlayer = new Image(skin, "perso");
+				savedPlayer = new Image(skin, players.get(i).getImg());
 				savedPlayer.setName(players.get(i).getNom());
 				savedPlayer.addListener(new SelectAccountListenner());
 			}
@@ -102,7 +106,6 @@ public class SeclectProfileScreen implements Screen {
 			} else {				
 				namePlayer = new Label(players.get(i).getNom(), skin);
 			}
-			
 			
 			
 			savedPlayers.add(namePlayer).padLeft(1).padRight(1);

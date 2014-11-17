@@ -1,5 +1,9 @@
 package com.mygdx.coreLogic.cards;
 
+
+/**
+ * Classe qui represente les carte presentent dans les deux panneaux
+ */
 public class CarteJeu extends Carte {
 
 	/**

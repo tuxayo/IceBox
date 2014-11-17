@@ -47,9 +47,12 @@ public class TooltipListener extends InputListener {
 		tooltip.setVisible(false);
 	}
 
+
 	/**
-	 * The offset of the tooltip from the touch position. It should not be
-	 * positive as the tooltip will flicker otherwise.
+	 * Positionne la fenetre du tooltip par raport à la position du click
+	 * le décalage ne doit pas etre positif 
+	 * @param offsetX
+	 * @param offsetY
 	 */
 	public void setOffset(float offsetX, float offsetY) {
 		offset.set(offsetX, offsetY);

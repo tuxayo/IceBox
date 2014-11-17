@@ -1,9 +1,16 @@
 package com.mygdx.parser;
 
+/**
+ *	Represente un noeud qui modélise la negation une expression 
+ */
 public class Negate extends UnaryOperator {
 	
 	public static final int neutralElem = 0;
 	
+	/**
+	 * Construit l'arbre qui represente la négation de right
+	 * @param right
+	 */
 	public Negate (ExpressionTree right) {
 		super(right);
 	}

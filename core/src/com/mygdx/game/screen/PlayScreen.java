@@ -26,7 +26,10 @@ import com.mygdx.coreLogic.paramGame.paramGame;
 import com.mygdx.game.tween.ActorAccessor;
 import com.mygdx.game.tween.SpriteAccessor;
 
-
+/**
+ * Represente l'ecran pricipal du jeu ou le joueur joue
+ *
+ */
 public class PlayScreen implements Screen {
 
 	private Sprite sprite;
@@ -54,7 +57,7 @@ public class PlayScreen implements Screen {
 		/**
 		 * Initialisation du contrôleur et des parametres du jeu
 		 */
-		paramGame.initGame();
+		paramGame.getInstance().initGame();
 
 
 
@@ -94,7 +97,7 @@ public class PlayScreen implements Screen {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				paramGame.getController().undo();
+				paramGame.getInstance().getController().undo();
 			}
 
 		});
@@ -116,9 +119,9 @@ public class PlayScreen implements Screen {
 		stage.addActor(close);
 		stage.addActor(undo);
 		stage.addActor(backToMenu);
-		stage.addActor(paramGame.getDeckActor());
-		stage.addActor(paramGame.getLeftpaneActor());
-		stage.addActor(paramGame.getRightpaneActor());
+		stage.addActor(paramGame.getInstance().getDeckActor());
+		stage.addActor(paramGame.getInstance().getLeftpaneActor());
+		stage.addActor(paramGame.getInstance().getRightpaneActor());
 
 	}
 

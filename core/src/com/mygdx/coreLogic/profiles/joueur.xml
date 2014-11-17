@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listejoueur>
+  <joueur nomimg="perso1">
+    <nom>Abde</nom>
+    <chapitre>
+      1
+      <niveau nb_etoile="2">10</niveau>
+      <niveau nb_etoile="2">9</niveau>
+      <niveau nb_etoile="2">9</niveau>
+      <niveau nb_etoile="2">9</niveau>
+      <niveau nb_etoile="2">10</niveau>
+    </chapitre>
+  </joueur>
+  <joueur nomimg="perso2">
+    <nom>Hamza</nom>
+    <chapitre>
+      1
+      <niveau nb_etoile="2">8</niveau>
+    </chapitre>
+  </joueur>
+  <joueur nomimg="perso3">
+    <nom>Autre</nom>
+    <chapitre>
+      1
+      <niveau nb_etoile="2">1</niveau>
+      <niveau nb_etoile="2">2</niveau>
+      <niveau nb_etoile="2">3</niveau>
+      <niveau nb_etoile="2">3</niveau>
+      <niveau nb_etoile="2">4</niveau>
+      <niveau nb_etoile="2">3</niveau>
+    </chapitre>
+  </joueur>
+  <joueur nomimg="perso4">
+    <nom>Test</nom>
+    <chapitre>
+      1
+      <niveau nb_etoile="2">1</niveau>
+      <niveau nb_etoile="2">2</niveau>
+      <niveau nb_etoile="2">3</niveau>
+    </chapitre>
+  </joueur>
+</listejoueur>

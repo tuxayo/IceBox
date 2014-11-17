@@ -5,7 +5,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.mygdx.coreLogic.paramGame.paramGame;
 
-
+/**
+ * Cette classe effectue le rendu graphique d'un {@link Pane}, sous forme 
+ * d'une grille de {@link SlotActor} (ie: une grille d'image)
+ */
 public class PaneActor extends Table {
 
 	private Pane pane;
@@ -13,10 +16,14 @@ public class PaneActor extends Table {
 	private DragAndDrop dragAndDrop;
 	private Skin skin;
 
+	/**
+	 * Cree un PaneActor qui gere le rendu graphique du panneau passé en paramètre
+	 * @param pane
+	 */
 	public PaneActor(Pane pane) {
 
-		this.dragAndDrop = paramGame.getDragAndDrop();
-		this.skin = paramGame.getSkin();
+		this.dragAndDrop = paramGame.getInstance().getDragAndDrop();
+		this.skin = paramGame.getInstance().getSkin();
 		this.pane = pane;
 		
 		int i = 0;
@@ -26,7 +33,6 @@ public class PaneActor extends Table {
 			dragAndDrop.addSource(new SlotSourcePane(slotActor));
 			dragAndDrop.addTarget(new SlotTargetPane(slotActor));
 			add(slotActor);
-
 
 			if (slot.isZero())
 				slotActor.addListener(slotActor.getClickDelCarteListener());
@@ -47,8 +53,8 @@ public class PaneActor extends Table {
 
 
 	public PaneActor( PaneActor paneActor ) {
-		this.dragAndDrop = paramGame.getDragAndDrop();
-		this.skin = paramGame.getSkin();
+		this.dragAndDrop = paramGame.getInstance().getDragAndDrop();
+		this.skin = paramGame.getInstance().getSkin();
 		this.isActive = paneActor.isActive;
 		this.pane = new Pane(paneActor.pane);
 		

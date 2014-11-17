@@ -1,9 +1,17 @@
 package com.mygdx.parser;
 
+/**
+ *	Represente un noeud qui modélise la soustraction de deux arbres d'expression 
+ */
 public class Subtract extends BinaryOperator {
 
 	public static final int neutralElem = 0;
 
+	/**
+	 * Construit l'arbre qui represente la soustraction entre left et right
+	 * @param left
+	 * @param right
+	 */
 	public Subtract (ExpressionTree left, ExpressionTree right) {
 		super(left,right);
 	}

@@ -24,7 +24,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.Assets;
 import com.mygdx.game.IceBox;
 
-
+/**
+ * 
+ * Represente l'ecran des options
+ */
 public class SettingsScreen implements Screen {
 
 	private Skin skin;

@@ -21,7 +21,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.Assets;
 import com.mygdx.game.tween.ActorAccessor;
 
-
+/**
+ * Represente l'ecran du menu
+ *
+ */
 public class MenuScreen implements Screen {
 
 	private Stage stage;

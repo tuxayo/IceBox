@@ -4,7 +4,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
 
-
+/**
+ * 
+ * Défini une destination valide pour un drag And Drop vers le deck, 
+ * et lui fourni un payload (ie l'information qui va etre du "Drand and Dropé")
+ *
+ */
 public class SlotTargetDeck extends Target {
 
 	public SlotTargetDeck(SlotActor actor) {

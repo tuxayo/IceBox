@@ -16,7 +16,11 @@ import com.mygdx.coreLogic.cards.CarteBox;
 import com.mygdx.coreLogic.cards.CarteDeck;
 import com.mygdx.coreLogic.cards.CarteJeu;
 
-
+/**
+ *	Modélise un niveau du jeu avec le nombre d'etoiles et l'image associée a 
+ *	ce niveau, ainsi que les listes des cartes contenu dans chaque panneau 
+ *	et deck
+ */
 public class Niveau {
 
 	private int nbEtoile;
@@ -134,42 +138,82 @@ public class Niveau {
 
 	}
 	
+	/**
+	 * 
+	 * @return Le nombre d'etoiles pour ce niveau
+	 */
 	public int getNbEtoile() {
 		return nbEtoile;
 	}
 
+	/**
+	 * Modifie le nombre d'étoiles de ce niveau
+	 * @param nbEtoile
+	 */
 	public void setNbEtoile(int nbEtoile) {
 		this.nbEtoile = nbEtoile;
 	}
 
+	/**
+	 * 
+	 * @return l'image associée a ce niveau
+	 */
 	public String getImg() {
 		return img;
 	}
 
+	/**
+	 * Modifie l'image associée a ce niveau
+	 * @param img
+	 */
 	public void setImg(String img) {
 		this.img = img;
 	}
 
+	/**
+	 * 
+	 * @return La liste des cartes contenue dans le panneau droit
+	 */
 	public ArrayList<Carte> getCartedroite() {
 		return cartedroite;
 	}
 
+	/**
+	 * Modifie la liste des cartes contenue dans le panneau droit
+	 * @param cartedroite
+	 */
 	public void setCartedroite(ArrayList<Carte> cartedroite) {
 		this.cartedroite = cartedroite;
 	}
 
+	/**
+	 * 
+	 * @return La liste des cartes contenue dans le panneau gauche
+	 */
 	public ArrayList<Carte> getCartegauche() {
 		return cartegauche;
 	}
 
+	/**
+	 * Modifie la liste des cartes contenue dans le panneau gauche
+	 * @param cartegauche
+	 */
 	public void setCartegauche(ArrayList<Carte> cartegauche) {
 		this.cartegauche = cartegauche;
 	}
 
+	/**
+	 * 
+	 * @return La liste des cartes contenue dans le deck
+	 */
 	public ArrayList<Carte> getCartedecks() {
 		return cartedecks;
 	}
 
+	/**
+	 * Modifie la liste des cartes contenue dans le deck
+	 * @param cartedecks
+	 */
 	public void setCartedecks(ArrayList<Carte> cartedecks) {
 		this.cartedecks = cartedecks;
 	}

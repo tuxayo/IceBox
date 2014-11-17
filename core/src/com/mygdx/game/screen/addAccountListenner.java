@@ -4,6 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+/**
+ * 
+ */
 public class addAccountListenner extends ClickListener {
 
 	@Override
@@ -12,5 +15,4 @@ public class addAccountListenner extends ClickListener {
 		Gdx.input.getTextInput(listener, "Entre ton nom et commence une partie !", "nom");
 	
 	}
-	
 }

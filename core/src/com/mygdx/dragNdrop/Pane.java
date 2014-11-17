@@ -5,14 +5,25 @@ import com.mygdx.coreLogic.cards.Carte;
 import com.mygdx.coreLogic.paramGame.Niveau;
 import com.mygdx.coreLogic.paramGame.paramGame;
 
+/**
+ * Cette classe s'occupe de géré un ensemble de {@link Slot} 
+ * présent dans un panneau
+ */
 public class Pane {
 
 	private Array<Slot> slots;
 
+	/**
+	 * Construit un deck qui gére les slot créés grace au 
+	 * cartes d'un panneau du niveau courrant pour le joueur courrant
+	 * Une exception est levée si le side == PaneSide.CENTER
+	 * @param side
+	 * @throws WrongSideException
+	 */
 	public Pane(PaneSide side) throws WrongSideException {
 		int emptySlot = 30;
 		slots = new Array<Slot>(30);
-		Niveau level = paramGame.getCurrentLevel();
+		Niveau level = paramGame.getInstance().getCurrentLevel();
 
 		if (side.equals(PaneSide.LEFT)) {
 			emptySlot -= level.getCartegauche().size();
@@ -35,6 +46,10 @@ public class Pane {
 
 	}
 
+	/**
+	 * Constructeur par recopie, recree un nouveau paneau
+	 * @param pane
+	 */
 	public Pane(Pane pane) {
 		slots = new Array<Slot>(30);
 		
@@ -42,6 +57,11 @@ public class Pane {
 			slots.add(new Slot(slot));
 	}
 
+	/**
+	 * Ajoute une carte au premier slot vide rencontré
+	 * @param card
+	 * @return True si l'ajout a été effectué False sinon
+	 */
 	public boolean store(Carte card) {
 		// check for an available empty slot
 		Slot emptySlot = firstSlotWithItem(null);
@@ -50,16 +70,24 @@ public class Pane {
 			return true;
 		}
 
-		// no slot to add
+		// aucun slot a ajouter
 		return false;
 	}
 
-
+	/**
+	 * 
+	 * @return La liste des Slots géré par ce panneau
+	 */
 	public Array<Slot> getSlots() {
 		return slots;
 	}
 
-
+	/**
+	 * 
+	 * @param card
+	 * @return Le premier slot contenant la carte passé en parametre, 
+	 * renvoie null si la carte n'est pas dans le panneau 
+	 */
 	private Slot firstSlotWithItem(Carte card) {
 		for (Slot slot : slots) {
 			if (slot.getCard() == card) {

@@ -11,7 +11,11 @@ public class SelectAccountListenner extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		paramGame.setJoueur(paramGame.getJoueur(event.getListenerActor().getName()));
+		paramGame.getInstance().setJoueur( 
+				paramGame.getInstance().getJoueur(
+						event.getListenerActor().getName()
+						)
+				);
 		( (Game) Gdx.app.getApplicationListener()).setScreen(new LevelScreen());
 	}
 }

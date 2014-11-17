@@ -14,55 +14,106 @@ import com.mygdx.dragNdrop.PaneActor;
 import com.mygdx.dragNdrop.PaneSide;
 import com.mygdx.dragNdrop.WrongSideException;
 
-public class paramGame {
 
-	public static final String PATH_LVL = "/home/abdelhak/workspace/IceBox/core/src/com/mygdx/coreLogic/levels/";
-	public static final String PATH_PROFILE = "/home/abdelhak/Téléchargements/projet_long/joueur.xml";
+/**
+ * Singleton qui est au coeur de la gestion du jeu et 
+ * gere un grande partie de la logique
+ *
+ */
+public final class paramGame {
+
+	public static final String PATH_LVL = 
+			"/home/abdelhak/workspace/IceBox/core/src/com/mygdx/coreLogic/levels/";
+	public static final String PATH_PROFILE = 
+			"/home/abdelhak/workspace/IceBox/core/src/com/mygdx/coreLogic/profiles/joueur.xml";
 	
-	private static Profil joueur;
-	private static List<Profil> allProfils;
-	private static List<Chapitre> allChapitres;
+	private static paramGame instance = null;
 	
-	private static ControllerGame controller;
-	private static DeckActor deckActor;
-	private static PaneActor leftpaneActor;
-	private static PaneActor rightpaneActor;
-	private static DragAndDrop dragAndDrop;
-	private static Skin skin;
-	private static boolean preloaded = false;
+	private Profil joueur;
+	private List<Profil> allProfils;
+	private List<Chapitre> allChapitres;
+	
+	private ControllerGame controller;
+	private DeckActor deckActor;
+	private PaneActor leftpaneActor;
+	private PaneActor rightpaneActor;
+	private DragAndDrop dragAndDrop;
+	private Skin skin;
+	private boolean preloaded = false;
 
-
-	public static Skin getSkin() {
+	/**
+	 * Constrcuteur privée vide
+	 */
+	private paramGame() {
+		
+	}
+	
+	/**
+	 * 
+	 * @return l'unique instance de paramGame ou en creer une nouevlle si c'est
+	 * 			la premiere
+	 */
+	public static paramGame getInstance() {
+		if (instance == null) {
+			instance = new paramGame();
+			return instance;
+		} else {
+			return instance;
+		}
+	}
+	
+	/**
+	 * 
+	 * @return le skin du jeu
+	 */
+	public Skin getSkin() {
 		return skin;
 	}
 
-	public static void setSkin(Skin skin) {
-		paramGame.skin = skin;
+	/**
+	 * modifie le skin du jeu
+	 * @param skin
+	 */
+	public void setSkin(Skin skin) {
+		this.skin = skin;
 	}
 
-	public static DragAndDrop getDragAndDrop() {
+	/**
+	 * 
+	 * @return l'objet qui gere les DragAndDrop 
+	 */
+	public DragAndDrop getDragAndDrop() {
 		return dragAndDrop;
 	}
 
-	public static void setDragAndDrop(DragAndDrop dragAndDrop) {
-		paramGame.dragAndDrop = dragAndDrop;
+	/**
+	 * Modifie l'objet qui gere les DragAndDrop 
+	 * @param dragAndDrop
+	 */
+	public void setDragAndDrop(DragAndDrop dragAndDrop) {
+		this.dragAndDrop = dragAndDrop;
 	}
 
-	public static void setParamGame(DeckActor deckActor, PaneActor leftpaneActor,
+	/**
+	 * Modifie les trois paneaux du jeu
+	 * @param deckActor
+	 * @param leftpaneActor
+	 * @param rightpaneActor
+	 */
+	public void setParamGame(DeckActor deckActor, PaneActor leftpaneActor,
 			PaneActor rightpaneActor)
 	{
-		paramGame.setDeckActor(deckActor);
-		paramGame.setLeftpaneActor(leftpaneActor);
-		paramGame.setRightpaneActor(rightpaneActor);
+		this.setDeckActor(deckActor);
+		this.setLeftpaneActor(leftpaneActor);
+		this.setRightpaneActor(rightpaneActor);
 
 		controller = new ControllerGame();
 	}
 
-	public paramGame() {
-		super();
-	}
-
-	public static void initGame() {
+	/**
+	 * Initialise le jeu
+	 */
+	public void initGame() {
 		skin = new Skin(Gdx.files.internal("ui/uiskin.json"), new TextureAtlas("ui/uiskin.pack"));
 		dragAndDrop = new DragAndDrop();
 
@@ -90,86 +141,147 @@ public class paramGame {
 	/**
 	 * Précharge les données utilisée par le jeu
 	 */
-	public static void preload() {
+	public void preload() {
 		preloaded = true;
 		allProfils = Profil.loadAllProfil(PATH_PROFILE);
 		allChapitres = Chapitre.loadAllChapitre();
 	}
 	
-	
-	
-	
-	public static Profil getJoueur() {
+	/**
+	 * 
+	 * @return le joueur courrant du jeu
+	 */
+	public Profil getJoueur() {
 		return joueur;
 	}
 
-	public static void setJoueur(Profil joueur) {
-		paramGame.joueur = joueur;
+	/**
+	 * Modifie le joueur courrant du jeu
+	 * @param joueur
+	 */
+	public void setJoueur(Profil joueur) {
+		this.joueur = joueur;
 	}
 
-	public static ControllerGame getController() {
+	/**
+	 * 
+	 * @return le {@link ControllerGame} de ce jeu
+	 */
+	public ControllerGame getController() {
 		return controller;
 	}
 
-	public static void setController(ControllerGame controller) {
-		paramGame.controller = controller;
+	/**
+	 * Modifie le {@link ControllerGame} de ce jeu
+	 * @param controller
+	 */
+	public void setController(ControllerGame controller) {
+		this.controller = controller;
 	}
 
-	public static DeckActor getDeckActor() {
+	/**
+	 * 
+	 * @return le {@link DeckActor} de ce jeu
+	 */
+	public DeckActor getDeckActor() {
 		return deckActor;
 	}
 
-	public static void setDeckActor(DeckActor deckActor) {
-		paramGame.deckActor = deckActor;
+	/**
+	 * Modifie le {@link DeckActor} de ce jeu
+	 * @param deckActor
+	 */
+	public void setDeckActor(DeckActor deckActor) {
+		this.deckActor = deckActor;
 	}
 
-	public static PaneActor getLeftpaneActor() {
+	/**
+	 * 
+	 * @return le {@link PaneActor} gauche de ce jeu
+	 */
+	public PaneActor getLeftpaneActor() {
 		return leftpaneActor;
 	}
 
-	public static void setLeftpaneActor(PaneActor leftpaneActor) {
-		paramGame.leftpaneActor = leftpaneActor;
+	/**
+	 * Modifie le {@link PaneActor} gauche de ce jeu
+	 * @param leftpaneActor
+	 */
+	public void setLeftpaneActor(PaneActor leftpaneActor) {
+		this.leftpaneActor = leftpaneActor;
 	}
 
-	public static PaneActor getRightpaneActor() {
+	/**
+	 * 
+	 * @return le {@link PaneActor} droit de ce jeu
+	 */
+	public PaneActor getRightpaneActor() {
 		return rightpaneActor;
 	}
 
-	public static PaneActor getNewRightPaneActor() {
-		PaneActor rightpaneActor = new PaneActor(paramGame.rightpaneActor);
+	/**
+	 * Modifie le {@link PaneActor} droit de ce jeu
+	 * @param rightpaneActor
+	 */
+	public void setRightpaneActor(PaneActor rightpaneActor) {
+		this.rightpaneActor = rightpaneActor;
+	}
+
+	/**
+	 * 
+	 * @return un nouveau {@link PaneActor} identique a celui renvoyé 
+	 * par {@link #getRightpaneActor()}
+	 */
+	public PaneActor getNewRightPaneActor() {
+		PaneActor rightpaneActor = new PaneActor(this.rightpaneActor);
 		rightpaneActor.setPosition(502, 163);
 
 		return rightpaneActor;
 	}
 
-	public static PaneActor getNewLeftPaneActor() {
-		PaneActor leftpaneActor = new PaneActor(paramGame.leftpaneActor);
+	/**
+	 * 
+	 * @return un nouveau {@link PaneActor} identique a celui renvoyé 
+	 * par {@link #getLeftpaneActor()}
+	 */
+	public PaneActor getNewLeftPaneActor() {
+		PaneActor leftpaneActor = new PaneActor(this.leftpaneActor);
 		leftpaneActor.setPosition(72, 163);
 
 		return leftpaneActor;
 	}
 
-	public static void setRightpaneActor(PaneActor rightpaneActor) {
-		paramGame.rightpaneActor = rightpaneActor;
+	/**
+	 * Supprimme le {@link PaneActor} Droit de ce jeu
+	 */
+	public void removeRightpaneActor() {
+		this.rightpaneActor.remove();
+		this.rightpaneActor = null;
 	}
 
-	public static void removeRightpaneActor() {
-		paramGame.rightpaneActor.remove();
-		paramGame.rightpaneActor = null;
+	/**
+	 * Supprimme le {@link PaneActor} gauche de ce jeu
+	 */
+	public void removeLeftpaneActor() {
+		this.leftpaneActor.remove();
+		this.leftpaneActor = null;
 	}
 
-	public static void removeLeftpaneActor() {
-		paramGame.leftpaneActor.remove();
-		paramGame.leftpaneActor = null;
+	/**
+	 * Supprimme le {@link DeckActor} de ce jeu
+	 */
+	public void removeDeckpaneActor() {
+		this.deckActor.remove();
+		this.deckActor = null;
 	}
 
-	public static void removeDeckpaneActor() {
-		paramGame.deckActor.remove();
-		paramGame.deckActor = null;
-	}
-
-	public static DeckActor getNewDeckActor() {
-		DeckActor deckActor = new DeckActor(paramGame.deckActor);
+	/**
+	 * 
+	 * @return un nouveau {@link DeckActor} identique a celui renvoyé 
+	 * par {@link #getDeckActor()}
+	 */
+	public DeckActor getNewDeckActor() {
+		DeckActor deckActor = new DeckActor(this.deckActor);
 
 		float X = (Gdx.graphics.getWidth() - deckActor.getWidth()) / 2.0f;
 		deckActor.setPosition(X, 10);
@@ -177,23 +289,44 @@ public class paramGame {
 		return deckActor;
 	}
 
-	public static List<Profil> getAllProfil() {
+	/**
+	 * 
+	 * @return la liste de tout les profils enregistrée 
+	 */
+	public List<Profil> getAllProfil() {
 		return allProfils;
 	}
 	
-	public static List<Chapitre> getAllChapitres() {
+	/**
+	 * 
+	 * @return La liste de tout les chapitres
+	 */
+	public List<Chapitre> getAllChapitres() {
 		return allChapitres;
 	}
 	
-	public static Chapitre getCurrentChapitre() {
+	/**
+	 * 
+	 * @return le chapitre courrant 
+	 */
+	public Chapitre getCurrentChapitre() {
 		return allChapitres.get(joueur.getChapEnCourt());
 	}
 	
-	public static Niveau getCurrentLevel() {
+	/**
+	 * 
+	 * @return Le niveau courrant du chapitre courrant
+	 */
+	public Niveau getCurrentLevel() {
 		return getCurrentChapitre().getNiveau(joueur.getNivEnCourt());
 	}
 
-	public static Profil getJoueur(String name) {
+	/**
+	 * 
+	 * @param name nom du profil
+	 * @return Le profil d'un joueur
+	 */
+	public Profil getJoueur(String name) {
 		
 		for (Profil profil : allProfils) {
 			if (profil.getNom().equals(name))
@@ -202,5 +335,5 @@ public class paramGame {
 		
 		return null;
 	}
-
+	
 } 

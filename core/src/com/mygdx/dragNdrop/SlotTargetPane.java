@@ -5,6 +5,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
 
 
+/**
+ * 
+ * Défini une destination valide pour un drag And Drop vers un panneau, 
+ * et lui fourni un payload (ie l'information qui va etre du "Drand and Dropé")
+ *
+ */
 public class SlotTargetPane extends Target {
 
 	private Slot targetSlot;
@@ -15,6 +21,7 @@ public class SlotTargetPane extends Target {
 		//		getActor().setColor(Color.LIGHT_GRAY);
 	}
 
+	
 	@Override
 	public boolean drag(Source source, Payload payload, float x, float y, int pointer) {
 

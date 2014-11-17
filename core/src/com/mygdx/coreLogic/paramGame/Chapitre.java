@@ -3,9 +3,14 @@ package com.mygdx.coreLogic.paramGame;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Modélise un chapitre avec les niveaux qu'il contient, son image, 
+ * et son nombre d'etoile
+ * 
+ */
 public class Chapitre {
 
-	private LinkedList<Niveau> niv;
+	private LinkedList<Niveau> niv; 
 	private String img;
 	private int nbEtoile;
 
@@ -29,18 +34,27 @@ public class Chapitre {
 		this.nbEtoile = 0;
 	}	
 	
-	
+	/**
+	 * Charge tout les chapitre depuis le fichier XML contenant la description 
+	 * des chapitres et renvoie la liste de tout les chapitre <p/>
+	 * 
+	 * /!\  Pour l'instant un seul chapitre est géré et aucun fichier XML n'est 
+	 * 		lu, l'unique chapitre renvoyé est généré grâce au 10 premiers niveaux
+	 * 		charger depuis les fichiers XML des niveaux
+	 * @return La liste de tous les chapitres
+	 */
+	@Deprecated
 	public static List<Chapitre> loadAllChapitre() {
 
 		List<Chapitre> allChapitre = new LinkedList<Chapitre>();
 		Chapitre chapitre = new Chapitre();
 		
 		for (int i = 1; i <= 10; i++) {
-			System.out.println("/*/*/*/*/*/*/*/*/*Niveau " + i + "/*/*/*/*/*/*/*/*/*");
+//			System.out.println("/*/*/*/*/*/*/*/*/*Niveau " + i + "/*/*/*/*/*/*/*/*/*");
 			Niveau niv = new Niveau();
 			niv.charger(paramGame.PATH_LVL + "niveau" + i + ".xml");
 			niv.affiche();
-			System.out.println("");
+//			System.out.println("");
 			
 			chapitre.addNiveau(niv);
 			allChapitre.add(chapitre);
@@ -100,6 +114,7 @@ public class Chapitre {
 
 	/**
 	 * Ajoute un niveau au chapitre
+	 * @param niv le niveau a ajouter
 	 */
 	public void addNiveau (Niveau niv) {
 		this.niv.add(niv);
@@ -117,8 +132,13 @@ public class Chapitre {
 		}
 	}
 
-	public Niveau getNiveau(int i) {
-		return niv.get(i-1);
+	/**
+	 * Renvoie le niveau spécifié en paramètre
+	 * @param numNiv
+	 * @return le niveau numero numNiv
+	 */
+	public Niveau getNiveau(int numNiv) {
+		return niv.get(numNiv-1);
 	}
 
 }

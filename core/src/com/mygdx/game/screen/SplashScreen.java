@@ -16,7 +16,10 @@ import com.mygdx.assets.Assets;
 import com.mygdx.coreLogic.paramGame.paramGame;
 import com.mygdx.game.tween.SpriteAccessor;
 
-
+/**
+ * Represente le premier écran de chargement
+ *
+ */
 public class SplashScreen implements Screen {
 
 	private SpriteBatch batch;
@@ -68,7 +71,7 @@ public class SplashScreen implements Screen {
 		/**
 		 * Précharge les données pour le jeu
 		 */
-		paramGame.preload();
+		paramGame.getInstance().preload();
 		
 	}
 	

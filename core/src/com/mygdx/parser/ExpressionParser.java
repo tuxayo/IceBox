@@ -3,18 +3,33 @@ package com.mygdx.parser;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-
+/**
+ * Classe permettant de parser une expression pour en contruire l'arbre 
+ * representant cette expression
+ */
 public class ExpressionParser {
 
 	private String expression;
 	StringTokenizer tokens;
 	
+	/**
+	 * Consruit une representation de l'expression spécifié, prete a être parsé
+	 * @param expression 
+	 */
 	public ExpressionParser(String expression) {
 		this.expression = expression.concat(";");
 		tokens = new StringTokenizer(this.expression, "()+-*/~; ",true);
 	}
 
 
+	/**
+	 * Construit l' {@link ExpressionTree} de cette expression. <p/>
+	 * Léve une exception {@link IllegalArgumentException} si l'expression 
+	 * est mal formée
+	 * @return l' {@link ExpressionTree} representant l'expression qui a servi 
+	 * a construire cette objet
+	 * @throws Exception
+	 */
 	public ExpressionTree parse() throws Exception
 	{
 		Stack<Object> ops  = new Stack<Object>();

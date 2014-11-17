@@ -1,9 +1,18 @@
 package com.mygdx.parser;
 
+
+/**
+ * Represente un noeud qui modélise la multiplication de deux arbres d'expression 
+ */
 public class Multiply extends BinaryOperator {
 
 	public static final int neutralElem = 1;
 	
+	/**
+	 * Construit l'arbre qui represente la multiplication entre left et right
+	 * @param left
+	 * @param right
+	 */
 	public Multiply (ExpressionTree left, ExpressionTree right)
 	{
 		super(left,right);

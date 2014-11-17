@@ -1,11 +1,14 @@
 package com.mygdx.parser;
 
+/**
+ * Classe abtraite qui represente un arbre qui modelise un opérateur 
+ */
 public abstract class Operator extends ExpressionTree {
 	
 	/**
-	 * Renvoi la précendence de l'opérateur {@link op}
-	 * @param op
-	 * @return La précendence de l'opérateur {@link op}
+	 * Renvoi la précendence d'un opérateur 
+	 * @param op 
+	 * @return La précendence d'un opérateur
 	 */
 	public static int getPrecedence (String op)
 	{

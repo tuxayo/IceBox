@@ -6,6 +6,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.mygdx.coreLogic.cards.Carte;
+import com.mygdx.coreLogic.paramGame.Profil;
 import com.mygdx.coreLogic.paramGame.paramGame;
 import com.mygdx.dragNdrop.DeckActor;
 import com.mygdx.dragNdrop.PaneActor;
@@ -14,8 +15,8 @@ import com.mygdx.game.screen.PlayScreen;
 import com.mygdx.parser.ExpressionParser;
 
 /**
- * Cette classe modélise le controleur qui va gérer les comportements 
- * des panneaux
+ * Singleton modélise le controleur qui va gérer les 
+ * comportements logique du jeu
  *
  */
 public class ControllerGame {
@@ -26,14 +27,12 @@ public class ControllerGame {
 	private Stack<Carte> previous_cardLeft = new Stack<Carte>();
 	private Stack<Carte> previous_cardRight = new Stack<Carte>();
 
+	
 	private Carte cardLeft;
 	private Carte cardRight;
 
 	/**
-	 * Constructeur d'un contrôleur avec trois paramètres
-	 * @param pg
-	 * @param pd
-	 * @param deck
+	 * Constructeur d'un contrôleur
 	 */
 	public ControllerGame() {
 		cardLeft = null;
@@ -54,14 +53,14 @@ public class ControllerGame {
 
 			if (cardRight == null && cardLeft == null) {
 				cardRight = newcarte;
-				paramGame.getRightpaneActor().suspends();
-				paramGame.getDeckActor().suspends(newcarte);
+				paramGame.getInstance().getRightpaneActor().suspends();
+				paramGame.getInstance().getDeckActor().suspends(newcarte);
 				return true;
 			} else if (cardRight == null && newcarte.getValeur() == cardLeft.getValeur()) {
 				cardRight = cardLeft = null;
-				paramGame.getRightpaneActor().resume();
-				paramGame.getLeftpaneActor().resume();
-				paramGame.getDeckActor().resume();
+				paramGame.getInstance().getRightpaneActor().resume();
+				paramGame.getInstance().getLeftpaneActor().resume();
+				paramGame.getInstance().getDeckActor().resume();
 				return true;
 			} else if (cardRight != null) {
 				return false;
@@ -73,14 +72,14 @@ public class ControllerGame {
 
 			if (cardLeft == null && cardRight == null) {
 				cardLeft = newcarte;
-				paramGame.getLeftpaneActor().suspends();
-				paramGame.getDeckActor().suspends(newcarte);
+				paramGame.getInstance().getLeftpaneActor().suspends();
+				paramGame.getInstance().getDeckActor().suspends(newcarte);
 				return true;
 			} else if (cardLeft == null && newcarte.getValeur() == cardRight.getValeur()) {
 				cardRight = cardLeft = null;
-				paramGame.getRightpaneActor().resume();
-				paramGame.getLeftpaneActor().resume();
-				paramGame.getDeckActor().resume();
+				paramGame.getInstance().getRightpaneActor().resume();
+				paramGame.getInstance().getLeftpaneActor().resume();
+				paramGame.getInstance().getDeckActor().resume();
 				return true;
 			} else if (cardLeft != null) {
 				return false;
@@ -99,8 +98,8 @@ public class ControllerGame {
 	 * @return Renvoie {@code True} si le niveau est fini {@code False} sinon
 	 */
 	public boolean checkGameState() {
-		return paramGame.getLeftpaneActor().isEmpty() && paramGame.getLeftpaneActor().containBoxCard() 
-				|| paramGame.getRightpaneActor().isEmpty() && paramGame.getRightpaneActor().containBoxCard();
+		return paramGame.getInstance().getLeftpaneActor().isEmpty() && paramGame.getInstance().getLeftpaneActor().containBoxCard() 
+				|| paramGame.getInstance().getRightpaneActor().isEmpty() && paramGame.getInstance().getRightpaneActor().containBoxCard();
 	}
 
 	/**
@@ -109,8 +108,8 @@ public class ControllerGame {
 	 */
 	public boolean isSimpified() {
 
-		String leftExpr = paramGame.getLeftpaneActor().stringify();
-		String rightExpr = paramGame.getRightpaneActor().stringify();
+		String leftExpr = paramGame.getInstance().getLeftpaneActor().stringify();
+		String rightExpr = paramGame.getInstance().getRightpaneActor().stringify();
 
 		ExpressionParser expL = new ExpressionParser(leftExpr);
 		ExpressionParser expR = new ExpressionParser(rightExpr);
@@ -135,11 +134,11 @@ public class ControllerGame {
 		}
 
 
-		System.out.println("Expression gauche : " + LeftTree);
-		System.out.println(simplLeftTree);
-
-		System.out.println("Expression droite : " + RightTree);
-		System.out.println(simplRightTree);		
+//		System.out.println("Expression gauche : " + LeftTree);
+//		System.out.println(simplLeftTree);
+//
+//		System.out.println("Expression droite : " + RightTree);
+//		System.out.println(simplRightTree);		
 
 
 		return LeftTree.equals(simplLeftTree) && RightTree.equals(simplRightTree);
@@ -155,19 +154,19 @@ public class ControllerGame {
 		if (previous_pd.isEmpty() || previous_pg.isEmpty()) 
 			return;
 
-		paramGame.setDragAndDrop(new DragAndDrop());
+		paramGame.getInstance().setDragAndDrop(new DragAndDrop());
 
-		paramGame.removeRightpaneActor();
-		paramGame.removeLeftpaneActor();
-		paramGame.removeDeckpaneActor();
+		paramGame.getInstance().removeRightpaneActor();
+		paramGame.getInstance().removeLeftpaneActor();
+		paramGame.getInstance().removeDeckpaneActor();
 
-		paramGame.setRightpaneActor(previous_pd.pop());
-		paramGame.setLeftpaneActor(previous_pg.pop());
-		paramGame.setDeckActor(previous_pc.pop());
+		paramGame.getInstance().setRightpaneActor(previous_pd.pop());
+		paramGame.getInstance().setLeftpaneActor(previous_pg.pop());
+		paramGame.getInstance().setDeckActor(previous_pc.pop());
 
-		PlayScreen.stage.addActor(paramGame.getRightpaneActor());
-		PlayScreen.stage.addActor(paramGame.getLeftpaneActor());
-		PlayScreen.stage.addActor(paramGame.getDeckActor());
+		PlayScreen.stage.addActor(paramGame.getInstance().getRightpaneActor());
+		PlayScreen.stage.addActor(paramGame.getInstance().getLeftpaneActor());
+		PlayScreen.stage.addActor(paramGame.getInstance().getDeckActor());
 
 		cardLeft  = previous_cardLeft.pop();
 		cardRight = previous_cardRight.pop();
@@ -175,31 +174,41 @@ public class ControllerGame {
 	}
 
 	/**
-	 * Sauvegarde la configuration courrante du platteau
+	 * Sauvegarde la configuration courrante du platteau <p/>
+	 * 
+	 * /!\ PEUT ETRE FACILEMENT FAITE DE MANIERE <b>BOUCOUP</b> PLUS EFFICIENTE
 	 */
+	@Deprecated
 	public void saveLastMove() {
 		System.out.println("save !");	
 
-		previous_pd.push(paramGame.getNewRightPaneActor());
-		previous_pg.push(paramGame.getNewLeftPaneActor());
-		previous_pc.push(paramGame.getNewDeckActor());
+		previous_pd.push(paramGame.getInstance().getNewRightPaneActor());
+		previous_pg.push(paramGame.getInstance().getNewLeftPaneActor());
+		previous_pc.push(paramGame.getInstance().getNewDeckActor());
 		
 		previous_cardLeft.push(cardLeft);
 		previous_cardRight.push(cardRight);
 
 	}
 
+	/**
+	 * Teste si c'est la fin d'un niveau et lance le niveau suivant
+	 */
 	public void checkEndLevel() {
-		if (paramGame.getController().checkGameState() && paramGame.getController().isSimpified()) {
+		if (paramGame.getInstance().getController().checkGameState() && paramGame.getInstance().getController().isSimpified()) {
 			
-			System.out.println("fini !!");
+			// System.out.println("fini !!");
 			
 			/**
 			 * TODO Attention implementer une fonction dans paramGame qui automatise le 
 			 * passage d'un nouveau niveau et potentiellement un chapitre
 			 */
+			if (paramGame.getInstance().getJoueur().getNivEnCourt() == 10) {
+				System.out.println("fin du jeu !");
+			}
 			
-			paramGame.getJoueur().setNivEnCourt(paramGame.getJoueur().getNivEnCourt() + 1);
+			paramGame.getInstance().getJoueur().setNivEnCourt(paramGame.getInstance().getJoueur().getNivEnCourt() + 1);
+			Profil.updateLevel(paramGame.PATH_PROFILE, paramGame.getInstance().getJoueur());
 			((Game) Gdx.app.getApplicationListener()).setScreen(new PlayScreen());
 		}
 		

@@ -4,6 +4,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import aurelienribon.tweenengine.TweenAccessor;
 
+/**
+ * Permet de faire varier la transparence, la couleur, et la hauteur d'objets 
+ * de type Actor
+ */
 public class ActorAccessor implements TweenAccessor<Actor> {
 
 	public static final int Y = 0, RGB = 1, ALPHA = 2;

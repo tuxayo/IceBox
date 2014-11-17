@@ -10,11 +10,19 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
 import com.mygdx.coreLogic.paramGame.paramGame;
 
-
+/**
+ * Défini une source valide pour un drag And Drop depuis le deck, 
+ * et lui fourni un payload (ie l'information qui va etre du "Drand and Dropé")
+ *
+ */
 public class SlotSourceDeck extends Source {
 
 	private Slot sourceSlot;
 	
+	/**
+	 * Créée une source initalise la source comme étant le slotActor passé en parametre
+	 * @param actor la source du drag and drop 
+	 */
 	public SlotSourceDeck(SlotActor actor) {
 		super(actor);
 		this.sourceSlot = actor.getSlot();
@@ -54,12 +62,12 @@ public class SlotSourceDeck extends Source {
 			
 			if (targetSlot.getCard() == null && !targetSlot.isSuspended() && !payloadSlot.isSuspended()) {
 				
-				paramGame.getController().saveLastMove();
+				paramGame.getInstance().getController().saveLastMove();
 				
 				targetSlot.add(payloadSlot.getCard());
 			}
 						
-			boolean isValid = paramGame.getController().Verification(payloadSlot.getCard(), targetSlot.getSide());
+			boolean isValid = paramGame.getInstance().getController().Verification(payloadSlot.getCard(), targetSlot.getSide());
 			System.out.println("isValidDrop : " + isValid);
 		}
 	}

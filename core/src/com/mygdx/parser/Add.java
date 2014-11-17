@@ -1,9 +1,17 @@
 package com.mygdx.parser;
 
+/**
+ *	Represente un noeud qui modélise l'addition de deux arbres d'expression 
+ */
 public class Add extends BinaryOperator {
 	
 	private static final int neutralElem = 0;
 	
+	/**
+	 * Construit l'arbre qui represente l'addition entre left et right
+	 * @param left
+	 * @param right
+	 */
 	public Add (ExpressionTree left, ExpressionTree right) {
 		super(left,right);
 	}
