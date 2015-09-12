@@ -22,4 +22,12 @@ la wiki directement sur GitHub.
 
 For more informations, check our website or the wiki on GitHub.
 
-                http://anun.free.fr/icedbox/
+http://anun.free.fr/icedbox/
+
+
+
+                           Developement
+      ==================================================
+
+Build with `gradle build`
+Try to run with `gradle run` (it doesn't work for now...)
